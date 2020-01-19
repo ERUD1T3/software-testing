@@ -1,5 +1,7 @@
 # test
 
+from bisect import insort
+
 
 class Test:
     '''Test class for prog unit testing'''
@@ -18,7 +20,8 @@ class Test:
             for line in f:
                 # looping through the file to store the data
                 i, o = line.split()
-                self.data[i].append(o)
+                # insert the data at the adequate position
+                insort(self.data[i], o)
 
     def isOnto(self):
         '''return true if the prog is onto'''
@@ -26,6 +29,7 @@ class Test:
 
     def isOne2One(self):
         '''return true if the prog is one2one'''
+
         return True
 
     def isReflexive(self):
