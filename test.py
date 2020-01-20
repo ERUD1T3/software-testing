@@ -29,16 +29,20 @@ class Test:
 
     def isOne2one(self):
         '''return true if the prog is one2one'''
-        for idx in range(1, self.size):
-            if len(self.data[idx]) != 1:
-                # if one element in the input has more than or
-                # less than one element in the output, it is not a one2one
-                return False
-        return True
 
     def isReflexive(self):
         '''return true if the prog is reflexive'''
-        return True
+
+        fn_status = True
+        for idx in range(1, self.size+1):
+            if len(self.data[idx]) != 1 \
+               or idx not in self.data[idx]:
+                    # check if the range has at least one element in
+                    # and if the number itself is present in the range
+                fn_status = False
+                break
+
+        print('Reflexive' if fn_status else 'Not reflexive')
 
     def isSymmetric(self):
         '''return true if the prog is symmetric'''
@@ -50,4 +54,12 @@ class Test:
 
     def isFunction(self):
         '''return true if the prog is a function'''
-        return True
+        fn_status = True
+        for idx in range(1, self.size + 1):
+            if len(self.data[idx]) != 1:
+                # if one element in the input has more than or
+                # less than one element in the output, it is not function
+                fn_status = False
+                break
+
+        print('Function' if fn_status else 'Not function')

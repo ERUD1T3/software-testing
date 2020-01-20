@@ -36,6 +36,6 @@ binary relation is transitive if
 >https://en.wikipedia.org/wiki/Transitive_relation
 
 ## Function 
-relation is a function if every value in the doamin is used and has exactly one value in the range
+relation is a function if every value in the domain is used and has exactly one value in the range
 
 
