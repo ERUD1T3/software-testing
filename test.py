@@ -12,7 +12,7 @@ class Test:
 
         with open(self.filename, 'r') as f:
             # reading the first line in as the total number of pairs
-            self.size = f.readline()
+            self.size = int(f.readline())
 
             # setting up the domain_set structure to containt the pairs
             self.domain_set = {i: [] for i in range(1, self.size + 1)}
@@ -68,6 +68,19 @@ class Test:
     def isSymmetric(self):
         '''return true if the prog is symmetric'''
         fn_status = True
+        idx = 1  # iteritor through dict keys
+        while fn_status and idx <= self.size:
+            if len(self.domain_set[idx]) != len(self.range_set[idx]):
+                # mismatch in set length, no sym
+                fn_status = False
+                break
+            else:
+                for d_el, r_el in zip(self.domain_set[idx], self.range_set[idx]):
+                    if d_el != r_el:
+                        # mismatch in set element, no sym
+                        fn_status = False
+                        break
+                idx += 1
 
         print('Symmetric' if fn_status else 'Not symmetric')
 
