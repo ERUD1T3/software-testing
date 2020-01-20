@@ -14,29 +14,50 @@ class Test:
             # reading the first line in as the total number of pairs
             self.size = f.readline()
 
-            # setting up the data structure to containt the pairs
-            self.data = {i: [] for i in range(1, self.size + 1)}
+            # setting up the domain_set structure to containt the pairs
+            self.domain_set = {i: [] for i in range(1, self.size + 1)}
+
+            # setting up the domain_set structure to containt the pairs
+            self.range_set = {i: [] for i in range(1, self.size + 1)}
 
             for line in f:
-                # looping through the file to store the data
+                # looping through the file to store the domain_set
                 i, o = line.split()
-                # insert the data at the adequate position
-                insort(self.data[i], o)
+                # insert the domain_set at the adequate position
+                insort(self.domain_set[i], o)
+                insort(self.range_set[o], i)
 
     def isOnto(self):
         '''return true if the prog is onto'''
-        return True
+        fn_status = True
+        for idx in range(1, self.size + 1):
+            if len(self.range_set[idx]) < 1:
+                # if one element in the input has more than or
+                # less than one element in the output, it is not function
+                fn_status = False
+                break
+
+        print('Onto' if fn_status else 'Not onto')
 
     def isOne2one(self):
         '''return true if the prog is one2one'''
+        fn_status = True
+        for idx in range(1, self.size + 1):
+            if len(self.domain_set[idx]) != 1 or \
+                    len(self.range_set[idx]) != 1:
+
+                fn_status = False
+                break
+
+        print('One to one' if fn_status else 'Not one to one')
 
     def isReflexive(self):
         '''return true if the prog is reflexive'''
 
         fn_status = True
         for idx in range(1, self.size+1):
-            if len(self.data[idx]) != 1 \
-               or idx not in self.data[idx]:
+            if len(self.domain_set[idx]) != 1 \
+               or idx not in self.domain_set[idx]:
                     # check if the range has at least one element in
                     # and if the number itself is present in the range
                 fn_status = False
@@ -46,7 +67,9 @@ class Test:
 
     def isSymmetric(self):
         '''return true if the prog is symmetric'''
-        return True
+        fn_status = True
+
+        print('Symmetric' if fn_status else 'Not symmetric')
 
     def isTransitive(self):
         '''return true if the prog is Transitive'''
@@ -56,7 +79,7 @@ class Test:
         '''return true if the prog is a function'''
         fn_status = True
         for idx in range(1, self.size + 1):
-            if len(self.data[idx]) != 1:
+            if len(self.domain_set[idx]) != 1:
                 # if one element in the input has more than or
                 # less than one element in the output, it is not function
                 fn_status = False
