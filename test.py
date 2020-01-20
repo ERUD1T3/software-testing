@@ -12,10 +12,10 @@ class Test:
 
         with open(self.filename, 'r') as f:
             # reading the first line in as the total number of pairs
-            self.pairs_num = f.readline()
+            self.size = f.readline()
 
             # setting up the data structure to containt the pairs
-            self.data = {i: [] for i in range(1, self.pairs_num + 1)}
+            self.data = {i: [] for i in range(1, self.size + 1)}
 
             for line in f:
                 # looping through the file to store the data
@@ -27,9 +27,13 @@ class Test:
         '''return true if the prog is onto'''
         return True
 
-    def isOne2One(self):
+    def isOne2one(self):
         '''return true if the prog is one2one'''
-
+        for idx in range(1, self.size):
+            if len(self.data[idx]) != 1:
+                # if one element in the input has more than or
+                # less than one element in the output, it is not a one2one
+                return False
         return True
 
     def isReflexive(self):
