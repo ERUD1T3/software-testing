@@ -15,6 +15,8 @@ def main():
     prog_test.isSymmetric()
     prog_test.isTransitive()
     prog_test.isFunction()
+    prog_test.isFunction('onto')
+    prog_test.isFunction('one2one')
 
     print('Test complete!')
 

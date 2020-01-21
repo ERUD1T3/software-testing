@@ -131,8 +131,9 @@ class Test:
 
         print('Transitive' if res else 'Not transitive')
 
-    def isFunction(self):
+    def isFunction(self, option=None):
         '''return true if the prog is a function'''
+
         res = True
         for idx in range(1, self.size + 1):
             if len(self.domain_set[idx]) != 1:
@@ -141,4 +142,12 @@ class Test:
                 res = False
                 break
 
-        print('Function' if res else 'Not function')
+        print('Function' if res else 'Not function', end='')
+
+        if res == True and option == 'onto':
+            self.isOnto()
+
+        if res == True and option == 'one2one':
+            self.isOne2one()
+
+        print()
