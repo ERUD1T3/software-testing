@@ -29,73 +29,111 @@ class Test:
 
     def isOnto(self):
         '''return true if the prog is onto'''
-        fn_status = True
+        res = True
         for idx in range(1, self.size + 1):
             if len(self.range_set[idx]) < 1:
                 # if one element in the input has more than or
                 # less than one element in the output, it is not function
-                fn_status = False
+                res = False
                 break
 
-        print('Onto' if fn_status else 'Not onto')
+        print('Onto' if res else 'Not onto')
 
     def isOne2one(self):
         '''return true if the prog is one2one'''
-        fn_status = True
+        res = True
         for idx in range(1, self.size + 1):
             if len(self.domain_set[idx]) != 1 or \
                     len(self.range_set[idx]) != 1:
 
-                fn_status = False
+                res = False
                 break
 
-        print('One to one' if fn_status else 'Not one to one')
+        print('One to one' if res else 'Not one to one')
 
     def isReflexive(self):
         '''return true if the prog is reflexive'''
 
-        fn_status = True
+        res = True
         for idx in range(1, self.size+1):
             if len(self.domain_set[idx]) != 1 \
                or idx not in self.domain_set[idx]:
                     # check if the range has at least one element in
                     # and if the number itself is present in the range
-                fn_status = False
+                res = False
                 break
 
-        print('Reflexive' if fn_status else 'Not reflexive')
+        print('Reflexive' if res else 'Not reflexive')
 
     def isSymmetric(self):
         '''return true if the prog is symmetric'''
-        fn_status = True
+        res = True
         idx = 1  # iteritor through dict keys
-        while fn_status and idx <= self.size:
+        while res and idx <= self.size:
+            # while result is not false and index is less than size
             if len(self.domain_set[idx]) != len(self.range_set[idx]):
                 # mismatch in set length, no sym
-                fn_status = False
+                res = False
                 break
             else:
                 for d_el, r_el in zip(self.domain_set[idx], self.range_set[idx]):
                     if d_el != r_el:
                         # mismatch in set element, no sym
-                        fn_status = False
+                        res = False
                         break
                 idx += 1
 
-        print('Symmetric' if fn_status else 'Not symmetric')
+        print('Symmetric' if res else 'Not symmetric')
+
+    def dfsTrans(self,
+                 visited, graph, src, dest,
+                 min_nedges, max_nedges, n_edges=0):
+        '''
+            runs depth first search on adjacency list graph
+            return true if there is transitivity
+        '''
+        if src == dest and \
+                n_edges >= min_nedges and \
+                n_edges < max_nedges:
+                # if you reached destination and
+                # the number of edge visited is within range
+            return True
+
+        if n_edges >= max_nedges:
+            # return when going beyond assigned max_nedges
+            return False
+
+        if src not in visited:
+            # print(src)
+            visited.append(src)
+            for nghbr in graph[src]:
+                return self.dfsTrans(visited, graph, nghbr, dest,
+                                     min_nedges, max_nedges, n_edges + 1)
+
+        return False  # defaulting to False
 
     def isTransitive(self):
         '''return true if the prog is Transitive'''
-        return True
+        res = True
+        idx = 1
+        while res and idx <= self.size:
+            for idy in self.domain_set[idx]:
+                visited = []
+                if not self.dfsTrans(visited, self.domain_set, idx, idy, 2, 3):
+                    res = False
+                    break
+            idx += 1
+
+        print('Transitive' if res else 'Not transitive')
 
     def isFunction(self):
         '''return true if the prog is a function'''
-        fn_status = True
+        res = True
         for idx in range(1, self.size + 1):
             if len(self.domain_set[idx]) != 1:
                 # if one element in the input has more than or
                 # less than one element in the output, it is not function
-                fn_status = False
+                res = False
                 break
 
-        print('Function' if fn_status else 'Not function')
+        print('Function' if res else 'Not function')
