@@ -142,7 +142,7 @@ class Test:
                 res = False
                 break
 
-        print('Function' if res else 'Not function', end='')
+        print('Function ' if res else 'Not function', end='')
 
         if res == True and option == 'onto':
             self.isOnto()
