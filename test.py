@@ -49,12 +49,22 @@ class Test:
     def isOne2one(self):
         '''return true if the prog is one2one'''
         res = True
-        for idx in range(1, self.size + 1):
-            if len(self.domain_set[idx]) != 1 or \
-                    len(self.range_set[idx]) != 1:
+        d_count = 0  # count of 1's in domain set
+        r_count = 0  # count of 1's in range set
 
+        for idx in range(1, self.size + 1):
+            if len(self.domain_set[idx]) > 1 or \
+                    len(self.range_set[idx]) > 1:
                 res = False
                 break
+
+            if len(self.domain_set[idx]) == 1:
+                d_count += 1
+            if len(self.range_set[idx]) == 1:
+                r_count += 1
+
+        if d_count != r_count:
+            res = False
 
         print('One to one' if res else 'Not one to one')
 
