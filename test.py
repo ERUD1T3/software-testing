@@ -1,36 +1,38 @@
 # test
 
 from bisect import insort
+import sys
 
 
 class Test:
     '''Test class for prog unit testing'''
 
-    def __init__(self, prog_output_file):
+    def __init__(self):
         '''initializes a test object for a test program based on output file'''
-        self.filename = prog_output_file
+        # self.filename = prog_output_file
 
-        with open(self.filename, 'r') as f:
-            # reading the first line in as the total number of pairs
-            self.size = int(f.readline())
+        # with open(self.filename, 'r') as f:
+        self.size = int(sys.stdin.readline())
+        # reading the first line in as the total number of pairs
+        # self.size = int(f.readline())
 
-            # setting up the domain_set structure to containt the pairs
-            self.domain_set = {i: [] for i in range(1, self.size + 1)}
-            # print(f'domain {self.domain_set}')
-            # setting up the domain_set structure to containt the pairs
-            self.range_set = {i: [] for i in range(1, self.size + 1)}
-            # print(f'range {self.range_set}')
+        # setting up the domain_set structure to containt the pairs
+        self.domain_set = {i: [] for i in range(1, self.size + 1)}
+        # print(f'domain {self.domain_set}')
+        # setting up the domain_set structure to containt the pairs
+        self.range_set = {i: [] for i in range(1, self.size + 1)}
+        # print(f'range {self.range_set}')
 
-            for line in f:
-                # looping through the file to store the domain_set
-                i, o = line.split()
+        for line in sys.stdin.readlines():
+            # looping through the file to store the domain_set
+            i, o = line.split()
 
-                i = int(i)
-                o = int(o)
-                # print(f'i = {i}, o = {o}')
-                # insert the domain_set at the adequate position
-                insort(self.domain_set[i], o)
-                insort(self.range_set[o], i)
+            i = int(i)
+            o = int(o)
+            # print(f'i = {i}, o = {o}')
+            # insert the domain_set at the adequate position
+            insort(self.domain_set[i], o)
+            insort(self.range_set[o], i)
 
     def isOnto(self):
         '''return true if the prog is onto'''

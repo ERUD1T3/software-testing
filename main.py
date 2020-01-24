@@ -1,11 +1,11 @@
 # main file for unit testing
 
 from test import Test
-import sys
 
 
 def main():
-    prog_test = Test(sys.argv[1])
+    # prog_test = Test(sys.argv[1])
+    prog_test = Test()
 
     print('Running tests...')
 
