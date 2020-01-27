@@ -121,7 +121,7 @@ class Test:
         if res == True and option == 'one2one':
             self.isOne2one()
 
-        print('\n')
+        print('\n', end='')
 
     def dfsTrans(self,
                  #  visited,
