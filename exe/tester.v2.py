@@ -46,7 +46,8 @@ class Test:
                 res = False
                 break
 
-        print('Onto' if res else 'Not onto')
+        return res
+        # print('Onto' if res else 'Not onto')
 
     def isOne2one(self):
         '''return true if the prog is one2one'''
@@ -68,21 +69,22 @@ class Test:
         if d_count != r_count:
             res = False
 
-        print('One to one' if res else 'Not one to one')
+        return res
+        # print('One to one' if res else 'Not one to one')
 
     def isReflexive(self):
         '''return true if the prog is reflexive'''
 
         res = True
         for idx in range(1, self.size+1):
-            if len(self.domain_set[idx]) != 1 \
-               or idx not in self.domain_set[idx]:
+            if idx not in self.domain_set[idx]:
                     # check if the range has at least one element in
                     # and if the number itself is present in the range
                 res = False
                 break
 
-        print('Reflexive' if res else 'Not reflexive')
+        return res
+        # print('Reflexive' if res else 'Not reflexive')
 
     def isSymmetric(self):
         '''return true if the prog is symmetric'''
@@ -101,10 +103,10 @@ class Test:
                         res = False
                         break
                 idx += 1
+        return res
+        # print('Symmetric' if res else 'Not symmetric')
 
-        print('Symmetric' if res else 'Not symmetric')
-
-    def isFunction(self, option=None):
+    def isFunction(self):
         '''return true if the prog is a function'''
 
         res = True
@@ -115,80 +117,50 @@ class Test:
                 res = False
                 break
 
-        print('Function ' if res else 'Not function', end='')
-
-        if res == True and option == 'onto':
-            self.isOnto()
-
-        if res == True and option == 'one2one':
-            self.isOne2one()
-
-        print('\n', end='')
-
-    def dfsTrans(self,
-                 visited,
-                 graph, src, dest,
-                 min_nedges, max_nedges, n_edges=0):
-        '''
-            runs depth first search on adjacency list graph
-            return true if there is transitivity
-
-            TODO: add tracking for visited parts but remove the destination from visited
-        '''
-        if src == dest and \
-                n_edges >= min_nedges and \
-                n_edges < max_nedges:
-                # if you reached destination and
-                # the number of edge visited is within range
-            return True
-
-        if n_edges >= max_nedges:
-            # return when going beyond assigned max_nedges
-            return False
-
-        if src not in visited:
-            # print(src)
-            if src != dest:
-                visited.append(src)
-            for nghbr in graph[src]:
-                return self.dfsTrans(visited, graph, nghbr, dest,
-                                     min_nedges, max_nedges, n_edges + 1)
-
-        return False  # defaulting to False
+        return res
+        # print('Function ' if res else 'Not function', end='')
 
     def isTransitive(self):
-        '''return true if the prog is Transitive'''
-        res = True
-        idx = 1
-        while res and idx <= self.size:
-            for idy in self.domain_set[idx]:
-                visited = []
-                if not self.dfsTrans(visited, self.domain_set, idx, idy, 2, 3):
-                    res = False
-                    break
-            idx += 1
+        '''return true if the prog is transitive '''
 
-        print('Transitive' if res else 'Not transitive')
+        for idx in range(1, self.size + 1):
+            for idy in self.domain_set[idx]:
+                for idz in self.domain_set[idy]:
+                    if idz not in self.domain_set[idx]:
+                        return False
+
+        return True
 
 
 def main():
     # prog_test = Test(sys.argv[1])
+
+    # receive input from pipeing stdin
     prog_test = Test()
 
     print('Running tests...')
 
     prog_test.isOnto()
-    prog_test.isOne2one()
-    prog_test.isReflexive()
-    prog_test.isSymmetric()
-    prog_test.isTransitive()
-    prog_test.isFunction()
-    prog_test.isFunction('onto')
-    prog_test.isFunction('one2one')
+    print('Onto ' if prog_test.isOnto() else 'Not onto')
+    print('One to one ' if prog_test.isOne2one() else 'Not one to one')
+    print('Reflexive ' if prog_test.isReflexive() else 'Not reflexive')
+    print('Symmetric ' if prog_test.isSymmetric() else 'Not symmetric')
+
+    print('Function ' if prog_test.isFunction() else 'Not function')
+    print('Onto function ' if prog_test.isFunction()
+          and prog_test.isOnto() else 'Not onto function')
+    print('One to one Function ' if prog_test.isFunction()
+          and prog_test.isOne2one() else 'Not one to one function')
+
+    print('Function ' if prog_test.isTransitive() else 'Not function')
 
     print('Test complete!')
 
 
 if __name__ == "__main__":
-    main()
+
+    try:
+        main()
+    except:
+        print('Error in Prog stdout')
     # print(sys.argv)
