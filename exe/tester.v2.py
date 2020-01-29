@@ -152,7 +152,7 @@ def main():
     print('One to one Function ' if prog_test.isFunction()
           and prog_test.isOne2one() else 'Not one to one function')
 
-    print('Function ' if prog_test.isTransitive() else 'Not function')
+    print('Transitive ' if prog_test.isTransitive() else 'Not transitive')
 
     print('Test complete!')
 
