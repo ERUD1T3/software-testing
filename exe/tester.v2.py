@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 
 # test
+'''
+    Program to test for relation properties:
+    one to one, onto, reflexive, symmetric, function, 
+    transitive
+    Authored by Josias Moukpe
+'''
 
 from bisect import insort
 import sys
@@ -145,14 +151,15 @@ def main():
     print('One to one ' if prog_test.isOne2one() else 'Not one to one')
     print('Reflexive ' if prog_test.isReflexive() else 'Not reflexive')
     print('Symmetric ' if prog_test.isSymmetric() else 'Not symmetric')
-
-    print('Function ' if prog_test.isFunction() else 'Not function')
-    print('Onto function ' if prog_test.isFunction()
-          and prog_test.isOnto() else 'Not onto function')
-    print('One to one Function ' if prog_test.isFunction()
-          and prog_test.isOne2one() else 'Not one to one function')
-
     print('Transitive ' if prog_test.isTransitive() else 'Not transitive')
+
+    if prog_test.isFunction():
+        print('Function')
+        print('Onto function ' if prog_test.isOnto() else 'Not onto function')
+        print('One to one function ' if prog_test.isOne2one()
+              else 'Not one to one function')
+    else:
+        print('Not function')
 
     print('\nTest complete!')
 
