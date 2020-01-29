@@ -138,7 +138,7 @@ def main():
     # receive input from pipeing stdin
     prog_test = Test()
 
-    print('Running tests...')
+    print('Running tests...\n')
 
     prog_test.isOnto()
     print('Onto ' if prog_test.isOnto() else 'Not onto')
@@ -154,7 +154,7 @@ def main():
 
     print('Transitive ' if prog_test.isTransitive() else 'Not transitive')
 
-    print('Test complete!')
+    print('\nTest complete!')
 
 
 if __name__ == "__main__":
