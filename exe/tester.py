@@ -155,7 +155,8 @@ class Test:
         to_print = True
 
         for idx in range(1, self.size + 1):
-
+            if to_print:
+                print()
             for idy in self.domain_set[idx]:
                 if not printed[idy]:
                     if to_print:
