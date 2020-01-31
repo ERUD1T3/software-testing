@@ -44,11 +44,11 @@ class Test:
 
     def __repr__(self):
         '''display the test data structures'''
-        print(f'{"Domain":20} {"Range":20}')
+        print(f'\tDomain \tRange')
         # for dom, ran in zip(self.domain_set, self.range_set):
         #     print(f'{dom}{ran}')
         for i in range(1, self.size + 1):
-            print(f'{i}: {self.domain_set[i]} {self.range_set[i]}:{i}')
+            print(f'{i}: \t{self.domain_set[i]} | \t{self.range_set[i]}')
 
     def isOnto(self):
         '''return true if the prog is onto'''
@@ -151,6 +151,7 @@ def main():
 
     # receive input from pipeing stdin
     prog_test = Test()
+
     print(f'data received:\n{prog_test}')
 
     print('Running tests...\n')
@@ -204,6 +205,6 @@ if __name__ == "__main__":
 
     try:
         main()
-    except:
-        print('Error in Prog stdout')
+    except Exception as e:
+        print(f'Error:{e} in Prog stdout')
     # print(sys.argv)
