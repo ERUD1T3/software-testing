@@ -171,6 +171,8 @@ class Test:
             if counter > 10:
                 to_print = False
 
+        if not to_print:
+            print('...')
         print(f'\ntotal of {counter} partitions!')
 
 
