@@ -48,7 +48,8 @@ class Test:
         # for dom, ran in zip(self.domain_set, self.range_set):
         #     print(f'{dom}{ran}')
         for i in range(1, self.size + 1):
-            print(f'{i}: \t{self.domain_set[i]} | \t\t{self.range_set[i]}')
+            print(
+                f'{i}: \t{self.domain_set[i]:50} | \t{self.range_set[i]:50}')
 
     def isOnto(self):
         '''return true if the prog is onto'''
