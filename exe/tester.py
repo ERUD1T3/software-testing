@@ -155,7 +155,6 @@ class Test:
                 if not printed[idy]:
                     print(idy, end=' ')
                     printed[idy] = True
-            print('\n')
 
 
 def main():
@@ -209,6 +208,7 @@ def main():
 
     if eq_checks == 3:
         print('Equivalence relation')
+        print('Partitions:')
         prog_test.printEqv()
 
     else:
