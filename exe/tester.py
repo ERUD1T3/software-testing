@@ -148,14 +148,29 @@ class Test:
         return True
 
     def printEqv(self):
+        # keep track of the already printed
         printed = {idx: False for idx in range(1, self.size + 1)}
+        counter = 0
+        was_partition = False
+        to_print = True
 
         for idx in range(1, self.size + 1):
-            print()
+
             for idy in self.domain_set[idx]:
                 if not printed[idy]:
-                    print(idy, end=' ')
+                    if to_print:
+                        print(idy, end=' ')
                     printed[idy] = True
+                    was_partition = True
+
+            if was_partition:
+                counter += 1
+                was_partition = False
+
+            if counter > 10:
+                to_print = False
+
+        print(f'total of {counter} partitions!')
 
 
 def main():
