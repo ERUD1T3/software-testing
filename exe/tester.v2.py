@@ -3,7 +3,7 @@
 # test
 '''
     Program to test for relation properties:
-    one to one, onto, reflexive, symmetric, function, 
+    one to one, onto, reflexive, symmetric, function,
     transitive
     Authored by Josias Moukpe
 '''
@@ -41,6 +41,14 @@ class Test:
             # insert the domain_set at the adequate position
             insort(self.domain_set[i], o)
             insort(self.range_set[o], i)
+
+    def __repr__(self):
+        '''display the test data structures'''
+        print(f'{"Domain":20} {"Range":20}')
+        # for dom, ran in zip(self.domain_set, self.range_set):
+        #     print(f'{dom}{ran}')
+        for i in range(1, self.size + 1):
+            print(f'{i}: {self.domain_set[i]} {self.range_set[i]}:{i}')
 
     def isOnto(self):
         '''return true if the prog is onto'''
@@ -143,23 +151,51 @@ def main():
 
     # receive input from pipeing stdin
     prog_test = Test()
+    print(f'data received:\n{prog_test}')
 
     print('Running tests...\n')
 
-    prog_test.isOnto()
-    print('Onto ' if prog_test.isOnto() else 'Not onto')
-    print('One to one ' if prog_test.isOne2one() else 'Not one to one')
-    print('Reflexive ' if prog_test.isReflexive() else 'Not reflexive')
-    print('Symmetric ' if prog_test.isSymmetric() else 'Not symmetric')
-    print('Transitive ' if prog_test.isTransitive() else 'Not transitive')
+    eq_checks = 0
+
+    if prog_test.isOnto():
+        print('Onto')
+    else:
+        print('Not onto')
+
+    if prog_test.isOne2one():
+        print('One to one ')
+    else:
+        print('Not one to one')
+
+    if prog_test.isReflexive():
+        print('Reflexive ')
+        eq_checks += 1
+    else:
+        print('Not reflexive')
+
+    if prog_test.isSymmetric():
+        print('Symmetric ')
+        eq_checks += 1
+    else:
+        print('Not symmetric')
+
+    if prog_test.isTransitive():
+        eq_checks += 1
+        print('Transitive ')
+    else:
+        print('Not transitive')
 
     if prog_test.isFunction():
         print('Function')
-        print('Onto function ' if prog_test.isOnto() else 'Not onto function')
+        print('Onto function ' if prog_test.isOnto()
+              else 'Not onto function')
         print('One to one function ' if prog_test.isOne2one()
               else 'Not one to one function')
     else:
         print('Not function')
+
+    if eq_checks == 3:
+        print('Equivalence relation')
 
     print('\nTest complete!')
 

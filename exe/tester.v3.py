@@ -149,11 +149,10 @@ def main():
 
     # receive input from pipeing stdin
     prog_test = Test()
-    print(f'data received:\n{prog_test}')
+    # print(f'data received:\n{prog_test}')
 
     print('Running tests...\n')
 
-    prog_test.isOnto()
     print('Onto ' if prog_test.isOnto() else 'Not onto')
     print('One to one ' if prog_test.isOne2one() else 'Not one to one')
     print('Reflexive ' if prog_test.isReflexive() else 'Not reflexive')
