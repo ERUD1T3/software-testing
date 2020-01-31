@@ -151,6 +151,7 @@ class Test:
         printed = {idx: False for idx in range(1, self.size + 1)}
 
         for idx in range(1, self.size + 1):
+            print()
             for idy in self.domain_set[idx]:
                 if not printed[idy]:
                     print(idy, end=' ')
