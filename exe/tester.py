@@ -147,6 +147,16 @@ class Test:
 
         return True
 
+    def printEqv(self):
+        printed = {idx: False for idx in range(1, self.size + 1)}
+
+        for idx in range(1, self.size + 1):
+            for idy in self.domain_set[idx]:
+                if not printed[idy]:
+                    print(idy, end=' ')
+                    printed[idy] = True
+            print('\n')
+
 
 def main():
     # prog_test = Test(sys.argv[1])
@@ -199,6 +209,10 @@ def main():
 
     if eq_checks == 3:
         print('Equivalence relation')
+        prog_test.printEqv()
+
+    else:
+        print('Not equivalence relation')
 
     print('\nTest complete!')
 
