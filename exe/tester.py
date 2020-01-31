@@ -171,7 +171,7 @@ class Test:
             if counter > 10:
                 to_print = False
 
-        print(f'total of {counter} partitions!')
+        print(f'\ntotal of {counter} partitions!')
 
 
 def main():
