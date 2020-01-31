@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 
 # test
+'''
+    Program to test for relation properties:
+    one to one, onto, reflexive, symmetric, function,
+    transitive
+    Authored by Josias Moukpe
+'''
 
 from bisect import insort
 import sys
@@ -36,6 +42,16 @@ class Test:
             insort(self.domain_set[i], o)
             insort(self.range_set[o], i)
 
+    def __repr__(self):
+        '''display the test data structures'''
+        print(f'\tDomain \t\tRange')
+        # for dom, ran in zip(self.domain_set, self.range_set):
+        #     print(f'{dom}{ran}')
+        for i in range(1, self.size + 1):
+            print(
+                f'{i}: \t{self.domain_set[i]} | \t{self.range_set[i]}')
+        return str(self.size)
+
     def isOnto(self):
         '''return true if the prog is onto'''
         res = True
@@ -46,7 +62,8 @@ class Test:
                 res = False
                 break
 
-        print('Onto' if res else 'Not onto')
+        return res
+        # print('Onto' if res else 'Not onto')
 
     def isOne2one(self):
         '''return true if the prog is one2one'''
@@ -68,21 +85,22 @@ class Test:
         if d_count != r_count:
             res = False
 
-        print('One to one' if res else 'Not one to one')
+        return res
+        # print('One to one' if res else 'Not one to one')
 
     def isReflexive(self):
         '''return true if the prog is reflexive'''
 
         res = True
         for idx in range(1, self.size+1):
-            if len(self.domain_set[idx]) != 1 \
-               or idx not in self.domain_set[idx]:
+            if idx not in self.domain_set[idx]:
                     # check if the range has at least one element in
                     # and if the number itself is present in the range
                 res = False
                 break
 
-        print('Reflexive' if res else 'Not reflexive')
+        return res
+        # print('Reflexive' if res else 'Not reflexive')
 
     def isSymmetric(self):
         '''return true if the prog is symmetric'''
@@ -101,10 +119,10 @@ class Test:
                         res = False
                         break
                 idx += 1
+        return res
+        # print('Symmetric' if res else 'Not symmetric')
 
-        print('Symmetric' if res else 'Not symmetric')
-
-    def isFunction(self, option=None):
+    def isFunction(self):
         '''return true if the prog is a function'''
 
         res = True
@@ -115,79 +133,80 @@ class Test:
                 res = False
                 break
 
-        print('Function ' if res else 'Not function', end='')
-
-        if res == True and option == 'onto':
-            self.isOnto()
-
-        if res == True and option == 'one2one':
-            self.isOne2one()
-
-        print('\n', end='')
-
-    def dfsTrans(self,
-                 #  visited,
-                 graph, src, dest,
-                 min_nedges, max_nedges, n_edges=0):
-        '''
-            runs depth first search on adjacency list graph
-            return true if there is transitivity
-
-            TODO: add tracking for visited parts but remove the destination from visited
-        '''
-        if src == dest and \
-                n_edges >= min_nedges and \
-                n_edges < max_nedges:
-                # if you reached destination and
-                # the number of edge visited is within range
-            return True
-
-        if n_edges >= max_nedges:
-            # return when going beyond assigned max_nedges
-            return False
-
-        # if src not in visited:
-        #     # print(src)
-        #     visited.append(src)
-        for nghbr in graph[src]:
-            return self.dfsTrans(graph, nghbr, dest,
-                                 min_nedges, max_nedges, n_edges + 1)
-
-        return False  # defaulting to False
+        return res
+        # print('Function ' if res else 'Not function', end='')
 
     def isTransitive(self):
-        '''return true if the prog is Transitive'''
-        res = True
-        idx = 1
-        while res and idx <= self.size:
-            for idy in self.domain_set[idx]:
-                # visited = []
-                if not self.dfsTrans(self.domain_set, idx, idy, 2, 3):
-                    res = False
-                    break
-            idx += 1
+        '''return true if the prog is transitive '''
 
-        print('Transitive' if res else 'Not transitive')
+        for idx in range(1, self.size + 1):
+            for idy in self.domain_set[idx]:
+                for idz in self.domain_set[idy]:
+                    if idz not in self.domain_set[idx]:
+                        return False
+
+        return True
 
 
 def main():
     # prog_test = Test(sys.argv[1])
+
+    # receive input from pipeing stdin
     prog_test = Test()
 
-    print('Running tests...')
+    print(f'data received:\n{prog_test}')
 
-    prog_test.isOnto()
-    prog_test.isOne2one()
-    prog_test.isReflexive()
-    prog_test.isSymmetric()
-    prog_test.isTransitive()
-    prog_test.isFunction()
-    prog_test.isFunction('onto')
-    prog_test.isFunction('one2one')
+    print('Running tests...\n')
 
-    print('Test complete!')
+    eq_checks = 0
+
+    if prog_test.isOnto():
+        print('Onto')
+    else:
+        print('Not onto')
+
+    if prog_test.isOne2one():
+        print('One to one ')
+    else:
+        print('Not one to one')
+
+    if prog_test.isReflexive():
+        print('Reflexive ')
+        eq_checks += 1
+    else:
+        print('Not reflexive')
+
+    if prog_test.isSymmetric():
+        print('Symmetric ')
+        eq_checks += 1
+    else:
+        print('Not symmetric')
+
+    if prog_test.isTransitive():
+        eq_checks += 1
+        print('Transitive ')
+    else:
+        print('Not transitive')
+
+    if prog_test.isFunction():
+        print('Function')
+        print('Onto function ' if prog_test.isOnto()
+              else 'Not onto function')
+        print('One to one function ' if prog_test.isOne2one()
+              else 'Not one to one function')
+    else:
+        print('Not function')
+
+    if eq_checks == 3:
+        print('Equivalence relation')
+
+    print('\nTest complete!')
 
 
 if __name__ == "__main__":
-    main()
+
+    try:
+        main()
+    except Exception as e:
+        print(f'Error:{e} in Prog stdout')
     # print(sys.argv)
