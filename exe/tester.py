@@ -153,21 +153,18 @@ class Test:
         counter = 0
         was_partition = False
         to_print = True
-        end_loop = False
 
         for idx in range(1, self.size + 1):
-            if to_print and end_loop:
-                print()
-            end_loop = False
             for idy in self.domain_set[idx]:
                 if not printed[idy]:
-                    if to_print:
-                        print(idy, end=' ')
                     printed[idy] = True
                     was_partition = True
-            end_loop = True
+                    if to_print:
+                        print(idy, end=' ')
 
             if was_partition:
+                if to_print:
+                    print()
                 counter += 1
                 was_partition = False
 
