@@ -155,7 +155,7 @@ class Test:
         to_print = True
 
         for idx in range(1, self.size + 1):
-            if to_print:
+            if to_print and was_partition:
                 print()
             for idy in self.domain_set[idx]:
                 if not printed[idy]:
@@ -182,7 +182,7 @@ def main():
     # receive input from pipeing stdin
     prog_test = Test()
 
-    print(f'data received:\n{prog_test}')
+    # print(f'data received:\n{prog_test}')
 
     print('Running tests...\n')
 
