@@ -190,14 +190,18 @@ def main():
     print('Running tests...\n')
 
     eq_checks = 0
+    is_onto = False
+    is_one2one = False
 
     if prog_test.isOnto():
         print('Onto')
+        is_onto = True
     else:
         print('Not onto')
 
     if prog_test.isOne2one():
         print('One to one ')
+        is_one2one = True
     else:
         print('Not one to one')
 
@@ -221,10 +225,8 @@ def main():
 
     if prog_test.isFunction():
         print('Function')
-        print('Onto function ' if prog_test.isOnto()
-              else 'Not onto function')
-        print('One to one function ' if prog_test.isOne2one()
-              else 'Not one to one function')
+        print('Onto function ' if is_onto else 'Not onto function')
+        print('One to one function ' if is_one2one else 'Not one to one function')
     else:
         print('Not function')
 
