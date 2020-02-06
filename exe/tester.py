@@ -4,7 +4,7 @@
 '''
     Program to test for relation properties:
     one to one, onto, reflexive, symmetric, function,
-    transitive
+    transitive, and equivalence
     Authored by Josias Moukpe
 '''
 
@@ -16,8 +16,7 @@ class Test:
     '''Test class for prog unit testing'''
 
     def __init__(self):
-        '''initializes a test object for a test program based on output file'''
-        # self.filename = prog_output_file
+        '''initializes a test object for a test program based on stdin data'''
 
         # with open(self.filename, 'r') as f:
         self.size = int(sys.stdin.readline())
@@ -32,7 +31,7 @@ class Test:
         # print(f'range {self.range_set}')
 
         for line in sys.stdin.readlines():
-            # looping through the file to store the domain_set
+            # looping through the file to store the domain_set and range_set
             i, o = line.split()
 
             i = int(i)
@@ -53,7 +52,7 @@ class Test:
         return str(self.size)
 
     def isOnto(self):
-        '''return true if the prog is onto'''
+        '''return true if the prog is onto, false otherwise'''
         res = True
         for idx in range(1, self.size + 1):
             if len(self.range_set[idx]) < 1:
@@ -66,12 +65,14 @@ class Test:
         # print('Onto' if res else 'Not onto')
 
     def isOne2one(self):
-        '''return true if the prog is one2one'''
+        '''return true if the prog is one2one, false otherwise'''
         res = True
         d_count = 0  # count of 1's in domain set
         r_count = 0  # count of 1's in range set
 
         for idx in range(1, self.size + 1):
+            # if either an element in the set or domain has than
+            # one pair associated, it is not one 2 one
             if len(self.domain_set[idx]) > 1 or \
                     len(self.range_set[idx]) > 1:
                 res = False
@@ -89,7 +90,7 @@ class Test:
         # print('One to one' if res else 'Not one to one')
 
     def isReflexive(self):
-        '''return true if the prog is reflexive'''
+        '''return true if the prog is reflexive, false otherwise'''
 
         res = True
         for idx in range(1, self.size+1):
@@ -103,7 +104,7 @@ class Test:
         # print('Reflexive' if res else 'Not reflexive')
 
     def isSymmetric(self):
-        '''return true if the prog is symmetric'''
+        '''return true if the prog is symmetric, false otherwise'''
         res = True
         idx = 1  # iteritor through dict keys
         while res and idx <= self.size:
@@ -123,7 +124,7 @@ class Test:
         # print('Symmetric' if res else 'Not symmetric')
 
     def isFunction(self):
-        '''return true if the prog is a function'''
+        '''return true if the prog is a function, false otherwise'''
 
         res = True
         for idx in range(1, self.size + 1):
@@ -137,22 +138,28 @@ class Test:
         # print('Function ' if res else 'Not function', end='')
 
     def isTransitive(self):
-        '''return true if the prog is transitive '''
-
+        '''return true if the prog is transitive, false otherwise'''
+        # go through all numbers idx in set
         for idx in range(1, self.size + 1):
+            # go through all idy numbers forming a pair with idx
             for idy in self.domain_set[idx]:
+                 # go through all idz numbers forming a pair with idy
                 for idz in self.domain_set[idy]:
+                    # check if idz also forms a pair with idx
                     if idz not in self.domain_set[idx]:
                         return False
 
         return True
 
     def printEqv(self):
-        # keep track of the already printed
+        '''Prints equivalence classes partitions'''
+        # keep track of the already printed classes
         printed = {idx: False for idx in range(1, self.size + 1)}
+        # tracks the number of printed partitions (no more than 10 )
         counter = 0
+        # tracks if a list of number is a partition that hasn't yet been printed
         was_partition = False
-        to_print = True
+        to_print = True  # tracks if remaining partitions should be printed
 
         for idx in range(1, self.size + 1):
             for idy in self.domain_set[idx]:
@@ -164,31 +171,33 @@ class Test:
 
             if was_partition:
                 if to_print:
-                    print()
+                    print()  # adds new line after a single partition is printed
                 counter += 1
                 was_partition = False
 
             if counter > 10:
+                # shouldn't print partitions anymore
                 to_print = False
 
         if not to_print:
             print('...')
+
+        # prints the total number of partitions
         print(f'\ntotal of {counter} partitions!')
 
 
 def main():
-    # prog_test = Test(sys.argv[1])
 
     # receive input from pipeing stdin
-    prog_test = Test()
+    prog_test = Test()  # constructor load data into prog_test test object
 
-    # print(f'data received:\n{prog_test}')
+    # print(f'data received:\n{prog_test}')  #prints the data stored for test
 
     print('Running tests...\n')
 
-    eq_checks = 0
-    is_onto = False
-    is_one2one = False
+    eq_checks = 0  # tracks equivalence checks (3 needed for equivalence)
+    is_onto = False  # tracks if onto
+    is_one2one = False  # tracks if one to one
 
     if prog_test.isOnto():
         print('Onto')
@@ -204,18 +213,18 @@ def main():
 
     if prog_test.isReflexive():
         print('Reflexive ')
-        eq_checks += 1
+        eq_checks += 1  # eq_checks = 1
     else:
         print('Not reflexive')
 
     if prog_test.isSymmetric():
         print('Symmetric ')
-        eq_checks += 1
+        eq_checks += 1  # eq_checks = 2
     else:
         print('Not symmetric')
 
     if prog_test.isTransitive():
-        eq_checks += 1
+        eq_checks += 1  # eq_checks = 3
         print('Transitive ')
     else:
         print('Not transitive')
@@ -241,7 +250,8 @@ def main():
 if __name__ == "__main__":
 
     try:
+        # run the main function
         main()
     except Exception as e:
-        print(f'Error:{e} in Prog stdout')
+        print(f'\n--{e}: Error in receiving stdin input--\n')
     # print(sys.argv)
