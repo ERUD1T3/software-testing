@@ -26,7 +26,7 @@ fi
 user=$1@code01.fit.edu
 sampleprogs=kgallagher/sampleprogs/
 oraclesprogs=kgallagher/oracles/
-localprogram=./udrive/student/jmoukpe2016/software-test/exe/tester.py
+localprogram=./tester.py
 
 # echo $TESTSITE
 
