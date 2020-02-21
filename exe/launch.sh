@@ -2,32 +2,63 @@
 
 # File to run tester.py against oracles
 
+# #!/bin/bash
+# # Script to compile and execute a c program in one step.
 
-USAGE="Usage: $0 nums..."
+# # Get file name without the .c extension
+# file_name=$(echo $1|sed 's/\(.*\)\.c/\1/')
 
+# # Compile the program with -o option to specify the name of the binary
+# gcc -o $file_name.out $1
+
+# # If there were no compilation errors, run the program
+# if [[ $? -eq 0 ]]; then
+#         ./$file_name.out
+# fi
+
+#!/bin/bash 
+USAGE="Usage: $0"
 if [ "$#" == "0" ]; then
-    echo "$USAGE"
-    exit 1
+echo "$USAGE Please Enter Username"
+exit 1
 fi
 
-TESTSITE=code01.fit.edu                      # andrew.cs.fit.edu
-TESTPATH=/udrive/student/jmoukpe2016/kgallagher/sampleprogs/
-TARGETPATH=/udrive/student/jmoukpe2016/software-test/exe/                               # public_html/sampleprogs/
-USER=jmoukpe2016
-GENERATORS=(
-            func
-            reflex
-            onetoone
-            onto
-           )
-TARGETS=(
-            tester.py
-        )
+user=$1@code01.fit.edu
+sampleprogs=kgallagher/sampleprogs/
+oraclesprogs=kgallagher/oracles/
+localprogram=./udrive/student/jmoukpe2016/software-test/exe/tester.py
 
-echo generator 
+# echo $TESTSITE
+
+GENERATORS=(
+             func
+             reflex
+             onetoone
+             onto
+            )
+TARGETS=( 
+            func
+	        reflex
+            onetoone 
+            onto
+         )
+
+arguments=(
+            0
+            100
+            500
+)
+
 for ((II=0; II < ${#GENERATORS[@]}; ++II)) do
-    echo $TESTSITE $TESTPATH${GENERATORS[II]} $1 $2
-    ssh $USER $TESTSITE $TESTPATH${GENERATORS[II]} $1 $2
-    ##  ssh $TESTSITE $TESTPATH${GENERATORS[II]} $1 $2  |
-    /usr/bin/time --verbose  ./${TARGETS[0]} 
+
+  for ((J = 0; J < ${#arguments[@]}; ++J)) do
+
+    echo $user~/$sampleprogs${GENERATORS[II]} ${arguments[J]}
+    ssh $user $sampleprogs${GENERATORS[II]} ${arguments[J]} | $localprogram
+  done
+
+##  ssh $TESTSITE $SAMPLEPROGS${GENERATORS[II]} $1 $2  | /usr/bin/time --verbose  ./${TARGETS[II]}  
+
 done
+
+#ssh andrew.cs.fit.edu public_html/sampleprogs/ref.trans  100 20 |  tee >(ssh andrew.cs.fit.edu  public_html/oracles/ref.sym) >(./ref.sym)  >(./ref.trans) > /dev/null
