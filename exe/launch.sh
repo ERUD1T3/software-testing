@@ -11,8 +11,9 @@ if [ "$#" == "0" ]; then
 fi
 
 TESTSITE=code01.fit.edu                      # andrew.cs.fit.edu
-TESTPATH=/udrive/faculty/kgallagher/public_html/sampleprogs/                                   # public_html/sampleprogs/
-
+TESTPATH=/udrive/student/jmoukpe2016/kgallagher/sampleprogs/
+TARGETPATH=/udrive/student/jmoukpe2016/software-test/exe/                               # public_html/sampleprogs/
+USER=jmoukpe2016
 GENERATORS=(
             func
             reflex
@@ -20,16 +21,13 @@ GENERATORS=(
             onto
            )
 TARGETS=(
-            func
-            reflex
-            onetoone
-            onto
+            tester.py
         )
 
 echo generator 
 for ((II=0; II < ${#GENERATORS[@]}; ++II)) do
     echo $TESTSITE $TESTPATH${GENERATORS[II]} $1 $2
-    ssh $TESTSITE $TESTPATH${GENERATORS[II]} $1 $2
+    ssh $USER $TESTSITE $TESTPATH${GENERATORS[II]} $1 $2
     ##  ssh $TESTSITE $TESTPATH${GENERATORS[II]} $1 $2  |
-    /usr/bin/time --verbose  ./${TARGETS[II]} 
+    /usr/bin/time --verbose  ./${TARGETS[0]} 
 done

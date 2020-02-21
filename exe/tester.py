@@ -56,8 +56,8 @@ class Test:
         res = True
         for idx in range(1, self.size + 1):
             if len(self.range_set[idx]) < 1:
-                # if one element in the input has more than or
-                # less than one element in the output, it is not function
+                # if one element in range has less than one
+                # antecedent in domain then it is not onto
                 res = False
                 break
 
@@ -129,8 +129,8 @@ class Test:
         res = True
         for idx in range(1, self.size + 1):
             if len(self.domain_set[idx]) != 1:
-                # if one element in the input has more than or
-                # less than one element in the output, it is not function
+                # if one element in the domain has more than or
+                # less than one element in the range, it is not function
                 res = False
                 break
 
