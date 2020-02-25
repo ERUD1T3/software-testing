@@ -15,11 +15,15 @@ import sys
 class Test:
     '''Test class for prog unit testing'''
 
-    def __init__(self):
+    def __init__(self, no_std_in=False):
         '''initializes a test object for a test program based on stdin data'''
 
         # with open(self.filename, 'r') as f:
-        self.size = int(sys.stdin.readline())
+
+        # print(f'line read: {sys.stdin.readline()}')
+
+        self.size = 0 if no_std_in else int(sys.stdin.readline())
+
         # reading the first line in as the total number of pairs
         # self.size = int(f.readline())
 
@@ -34,6 +38,7 @@ class Test:
             # looping through the file to store the domain_set and range_set
             i, o = line.split()
 
+            # print(f'i = {i}, o = {o}')
             i = int(i)
             o = int(o)
             # print(f'i = {i}, o = {o}')
@@ -186,10 +191,11 @@ class Test:
         print(f'\ntotal of {counter} partitions!')
 
 
-def main():
+def main(no_std_in=False):
 
     # receive input from pipeing stdin
-    prog_test = Test()  # constructor load data into prog_test test object
+    # constructor load data into prog_test test object
+    prog_test = Test(no_std_in)
 
     # print(f'data received:\n{prog_test}')  #prints the data stored for test
 
@@ -252,6 +258,10 @@ if __name__ == "__main__":
     try:
         # run the main function
         main()
+
+    except ValueError as v:
+        main(True)
+
     except Exception as e:
         print(f'\n--{e}: Error in receiving stdin input--\n')
     # print(sys.argv)
