@@ -3,35 +3,33 @@
 
 start_time=`date +%s` #used to get the script runtime
 
-> output #empties the output file so that only new input is written to it
+> runtimes.txt #empties the output file so that only new input is written to it
 
-USAGE="Usage: $0 nums..."
-if [ "$#" == "0" ]; then
-    echo "$USAGE" please enter Username and arguments
-    exit 1
-fi
+# USAGE="Usage: $0 nums..."
+# if [ "$#" == "0" ]; then
+#     echo "$USAGE" please enter Username as argument
+#     exit 1
+# fi
 
-USER=$1
-TESTSITE=$USER@code01.fit.edu 
-TESTPATH=kgallagher/sampleprogs/
-TARGETPATH=kgallagher/oracles/
+# USER=$1
+USER=jmoukpe2016                    #tracks username   
+TESTSITE=$USER@code01.fit.edu       #full server site domain 
+TESTPATH=kgallagher/sampleprogs/    #path to sample programs
+TARGETPATH=kgallagher/oracles/      # path to oracles 
 
 GENERATORS=$(ssh $TESTSITE ls $TESTPATH)
 TARGETS=$(ssh $TESTSITE ls $TARGETPATH)
 
+echo $TESTSITE
 
-for i in $GENERATORS
-do
-    for j in {0..5000..500}
+for i in $GENERATORS 
     do
-        sleep 1
-        echo''
-        echo $TESTSITE $TESTPATH$i $j
-	      echo $TESTPATH$i $j
-        ssh $TESTSITE $TESTPATH$i $j | tee >(/usr/bin/time -o output -a -f 'Target process info:\nElapsed time: %e, Memory use(KB): %K, Process Size(KB): %t' ssh $TESTSITE $TARGETPATH$i) >(/usr/bin/time -o output -a -f 'Local Process info:\nElapsed time: %e, Memory Use(KB): %K, Process Size(KB): %t' python3 tester.py) >/dev/null
-        sleep 1
-        echo''
+    for j in {0..5000..500} 
+        do
+	    echo $TESTPATH$i $j
+        ssh $TESTSITE $TESTPATH$i $j | tee >(/usr/bin/time -o runtimes.txt -a -f 'Target: Elapsed time: %e' ssh $TESTSITE $TARGETPATH$i) >(/usr/bin/time -o runtimes.txt -a -f 'Local: Elapsed time: %e' python3 tester.py) >/dev/null
+        sleep .5
     done
 done
 
-echo script total runtime is $(expr `date +%s` - $start_time) s
+echo Total Test Runtime: $(expr `date +%s` - $start_time) s

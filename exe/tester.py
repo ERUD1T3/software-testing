@@ -164,7 +164,7 @@ class Test:
         counter = 0
         # tracks if a list of number is a partition that hasn't yet been printed
         was_partition = False
-        to_print = True  # tracks if remaining partitions should be printed
+        to_print = False  # tracks if remaining partitions should be printed
 
         for idx in range(1, self.size + 1):
             for idy in self.domain_set[idx]:
@@ -185,10 +185,11 @@ class Test:
                 to_print = False
 
         if not to_print:
-            print('...')
+            # print('...')
+            pass
 
-        # prints the total number of partitions
-        print(f'\ntotal of {counter} partitions!')
+            # prints the total number of partitions
+        print(f'\n {counter} classes')
 
 
 def main(no_std_in=False):
@@ -199,7 +200,7 @@ def main(no_std_in=False):
 
     # print(f'data received:\n{prog_test}')  #prints the data stored for test
 
-    print('Running tests...\n')
+    # print('Running tests...\n')
 
     eq_checks = 0  # tracks equivalence checks (3 needed for equivalence)
     is_onto = False  # tracks if onto
@@ -244,13 +245,13 @@ def main(no_std_in=False):
 
     if eq_checks == 3:
         print('Equivalence relation')
-        print('Partitions:')
+        # print('Partitions:')
         prog_test.printEqv()
 
     else:
         print('Not equivalence relation')
 
-    print('\nTest complete!')
+    # print('\nTest complete!')
 
 
 if __name__ == "__main__":
