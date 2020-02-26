@@ -18,16 +18,32 @@ TESTPATH=kgallagher/sampleprogs/    #path to sample programs
 TARGETPATH=kgallagher/oracles/      # path to oracles 
 
 GENERATORS=$(ssh $TESTSITE ls $TESTPATH)
-TARGETS=$(ssh $TESTSITE ls $TARGETPATH)
+# TARGETS=$(ssh $TESTSITE ls $TARGETPATH)
+TARGETS=(
+    onto
+    onetoone
+    reflex
+    sym
+    trans
+    func
+    eq
+)
 
-echo $TESTSITE
+echo Server: $TESTSITE
 
-for i in $GENERATORS 
+for j in {0..5000..500} 
     do
-    for j in {0..5000..500} 
+    for i in $GENERATORS 
         do
-	    echo $TESTPATH$i $j
-        ssh $TESTSITE $TESTPATH$i $j | tee >(/usr/bin/time -o runtimes.txt -a -f 'Target: Elapsed time: %e' ssh $TESTSITE $TARGETPATH$i) >(/usr/bin/time -o runtimes.txt -a -f 'Local: Elapsed time: %e' python3 tester.py) >/dev/null
+        echo ''
+	    echo Runs: $TESTPATH$i $j
+        # ssh $TESTSITE $TESTPATH$i $j | tee >(/usr/bin/time -o runtimes.txt -a -f 'Target: Elapsed time: %e' ssh $TESTSITE $TARGETPATH$i) >(/usr/bin/time -o runtimes.txt -a -f 'Local: Elapsed time: %e' python3 tester.py) >/dev/null
+        ssh $TESTSITE $TESTPATH$i $j | tee >(
+            for ((II=0; II < ${#TARGETS[@]}; ++II))
+                do
+                ssh $TESTSITE $TARGETPATH${TARGETS[II]}
+            done
+            ) >(/usr/bin/time -o runtimes.txt -a -f 'Local: Elapsed time: %e' python3 tester.py) >/dev/null
         sleep .5
     done
 done

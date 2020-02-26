@@ -201,6 +201,7 @@ def main(no_std_in=False):
     # print(f'data received:\n{prog_test}')  #prints the data stored for test
 
     # print('Running tests...\n')
+    print('\n---Start of Test Program---')
 
     eq_checks = 0  # tracks equivalence checks (3 needed for equivalence)
     is_onto = False  # tracks if onto
@@ -252,6 +253,7 @@ def main(no_std_in=False):
         print('Not equivalence relation')
 
     # print('\nTest complete!')
+    print('---End of Test---')
 
 
 if __name__ == "__main__":

@@ -1,0 +1,44 @@
+Command exited with non-zero status 2
+Local: Elapsed time: 0.02
+Command exited with non-zero status 11
+Target: Elapsed time: 2.66
+Command exited with non-zero status 2
+Local: Elapsed time: 0.02
+Command exited with non-zero status 13
+Target: Elapsed time: 2.86
+Command exited with non-zero status 2
+Local: Elapsed time: 0.04
+Command exited with non-zero status 13
+Target: Elapsed time: 2.71
+Command exited with non-zero status 2
+Local: Elapsed time: 0.02
+Command exited with non-zero status 14
+Target: Elapsed time: 2.63
+Command exited with non-zero status 2
+Local: Elapsed time: 0.02
+Command exited with non-zero status 14
+Target: Elapsed time: 2.84
+Command exited with non-zero status 2
+Local: Elapsed time: 0.02
+Command exited with non-zero status 14
+Target: Elapsed time: 2.85
+Command exited with non-zero status 2
+Local: Elapsed time: 0.03
+Command exited with non-zero status 14
+Target: Elapsed time: 2.99
+Command exited with non-zero status 2
+Local: Elapsed time: 0.03
+Command exited with non-zero status 14
+Target: Elapsed time: 2.81
+Command exited with non-zero status 2
+Local: Elapsed time: 0.02
+Command exited with non-zero status 14
+Target: Elapsed time: 2.59
+Command exited with non-zero status 2
+Local: Elapsed time: 0.02
+Command exited with non-zero status 14
+Target: Elapsed time: 2.90
+Command exited with non-zero status 2
+Local: Elapsed time: 0.04
+Command terminated by signal 2
+Target: Elapsed time: 74.35

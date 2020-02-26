@@ -1,33 +1,9 @@
-Local: Elapsed time: 3.45
-Command exited with non-zero status 11
-Target: Elapsed time: 3.78
-Local: Elapsed time: 3.41
-Command exited with non-zero status 13
-Target: Elapsed time: 3.46
-Local: Elapsed time: 3.68
-Command exited with non-zero status 13
-Target: Elapsed time: 3.72
-Local: Elapsed time: 3.67
-Command exited with non-zero status 13
-Target: Elapsed time: 3.70
-Local: Elapsed time: 3.46
-Command exited with non-zero status 14
-Target: Elapsed time: 3.55
-Local: Elapsed time: 3.11
-Command exited with non-zero status 14
-Target: Elapsed time: 3.20
-Local: Elapsed time: 3.06
-Command exited with non-zero status 14
-Target: Elapsed time: 3.22
-Target: Elapsed time: 2.46
+Local: Elapsed time: 2.65
+Local: Elapsed time: 2.61
+Local: Elapsed time: 2.75
 Command exited with non-zero status 1
-Local: Elapsed time: 2.46
-Local: Elapsed time: 3.31
-Command exited with non-zero status 14
-Target: Elapsed time: 3.64
-Target: Elapsed time: 0.74
+Local: Elapsed time: 1.58
 Command exited with non-zero status 1
-Local: Elapsed time: 0.75
-Target: Elapsed time: 0.88
+Local: Elapsed time: 2.40
 Command exited with non-zero status 1
-Local: Elapsed time: 0.89
+Local: Elapsed time: 0.02
