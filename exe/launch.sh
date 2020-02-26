@@ -41,9 +41,11 @@ for j in {0..5000..500}
         ssh $TESTSITE $TESTPATH$i $j | tee >(
             for ((II=0; II < ${#TARGETS[@]}; ++II))
                 do
-                ssh $TESTSITE $TARGETPATH${TARGETS[II]}
+                echo ${TARGETS[II]} &>> runtimes.txt
+                /usr/bin/time -o runtimes.txt -a -f 'Oracles Elapsed Time: %e' ssh $TESTSITE $TARGETPATH${TARGETS[II]}
+                # sleep .5
             done
-            ) >(/usr/bin/time -o runtimes.txt -a -f 'Local: Elapsed time: %e' python3 tester.py) >/dev/null
+            ) >(/usr/bin/time -o runtimes.txt -a -f 'Tester Elapsed Time: %e' python3 tester.py) >/dev/null
         sleep .5
     done
 done
