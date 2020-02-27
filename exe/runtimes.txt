@@ -1,203 +1,98 @@
-onto
-Tester Elapsed Time: 3.19
-onto
-Tester Elapsed Time: 2.92
-Oracles Elapsed Time: 2.94
-onto
-onetoone
-Oracles Elapsed Time: 3.52
-Tester Elapsed Time: 3.67
-reflex
-onto
-Oracles Elapsed Time: 3.14
-Tester Elapsed Time: 3.00
-Oracles Elapsed Time: 3.01
-sym
-onto
-onetoone
-Oracles Elapsed Time: 3.12
-Oracles Elapsed Time: 3.13
-Tester Elapsed Time: 3.19
-Oracles Elapsed Time: 3.19
-reflex
-trans
-onto
-onetoone
-Oracles Elapsed Time: 4.11
-Oracles Elapsed Time: 4.18
-Command exited with non-zero status 14
-Oracles Elapsed Time: 4.26
-Tester Elapsed Time: 4.37
-sym
-reflex
-func
-onto
-Oracles Elapsed Time: 3.29
-Oracles Elapsed Time: 26.46
-Oracles Elapsed Time: 3.26
-Oracles Elapsed Time: 3.46
-Tester Elapsed Time: 3.28
-trans
-onetoone
-eq
-sym
-onto
-Oracles Elapsed Time: 3.99
+Tester runtime: 11.12
 Command exited with non-zero status 11
-Oracles Elapsed Time: 3.96
+Oracles Eq runtime: 11.17
+Oracles Func runtime: 11.26
 Command exited with non-zero status 14
-Oracles Elapsed Time: 4.02
-Oracles Elapsed Time: 3.85
-Tester Elapsed Time: 4.11
-Oracles Elapsed Time: 4.12
-reflex
-func
-trans
-onto
-onetoone
-Oracles Elapsed Time: 25.48
-onetoone
-Oracles Elapsed Time: 3.97
-Oracles Elapsed Time: 3.97
-Command exited with non-zero status 14
-Oracles Elapsed Time: 3.97
-Tester Elapsed Time: 3.79
-Oracles Elapsed Time: 3.99
-eq
-sym
-func
-onto
-reflex
-Oracles Elapsed Time: 3.19
-reflex
+Oracles Trans runtime: 11.30
+Oracles Sym runtime: 11.33
+Oracles Reflex runtime: 11.36
+Oracles Onetoone runtime: 11.39
+Tester runtime: 9.14
 Command exited with non-zero status 11
-Oracles Elapsed Time: 4.10
-Oracles Elapsed Time: 4.10
-Tester Elapsed Time: 4.04
-Oracles Elapsed Time: 4.24
-Oracles Elapsed Time: 4.12
-trans
-onto
-eq
-Oracles Elapsed Time: 4.03
-sym
-sym
+Oracles Eq runtime: 9.34
+Oracles Func runtime: 9.37
 Command exited with non-zero status 14
-Oracles Elapsed Time: 4.29
+Oracles Trans runtime: 9.39
+Oracles Sym runtime: 9.40
+Oracles Reflex runtime: 9.42
+Oracles Onetoone runtime: 9.43
+Oracles Onto runtime: 9.46
+Tester runtime: 4.61
 Command exited with non-zero status 11
-Oracles Elapsed Time: 4.16
-Tester Elapsed Time: 4.25
-Oracles Elapsed Time: 4.28
-Oracles Elapsed Time: 4.23
-Oracles Elapsed Time: 3.86
-func
-onto
-onetoone
-trans
-trans
-Oracles Elapsed Time: 28.22
-onetoone
-Oracles Elapsed Time: 3.89
-Tester Elapsed Time: 3.98
-Oracles Elapsed Time: 3.98
+Oracles Eq runtime: 4.63
+Oracles Func runtime: 4.67
 Command exited with non-zero status 14
-Oracles Elapsed Time: 3.79
-Oracles Elapsed Time: 4.14
-Command exited with non-zero status 14
-Oracles Elapsed Time: 3.88
-eq
-onto
-onetoone
-func
-reflex
-func
-Oracles Elapsed Time: 3.12
-reflex
-Oracles Elapsed Time: 28.17
-onetoone
-Oracles Elapsed Time: 4.82
+Oracles Trans runtime: 4.69
+Oracles Sym runtime: 4.73
+Oracles Reflex runtime: 4.76
+Oracles Onetoone runtime: 4.78
+Tester runtime: 4.90
 Command exited with non-zero status 11
-Oracles Elapsed Time: 5.04
-Tester Elapsed Time: 4.99
-Oracles Elapsed Time: 4.83
-Oracles Elapsed Time: 5.15
-Oracles Elapsed Time: 23.41
-Oracles Elapsed Time: 3.14
-Oracles Elapsed Time: 5.33
-Oracles Elapsed Time: 19.12
-Oracles Elapsed Time: 4.33
-Oracles Elapsed Time: 5.13
-onetoone
-reflex
-onetoone
-sym
-onetoone
-sym
-Oracles Elapsed Time: 4.10
-Oracles Elapsed Time: 4.11
-Oracles Elapsed Time: 4.12
-Oracles Elapsed Time: 4.50
-Oracles Elapsed Time: 4.50
-sym
-trans
-reflex
-Oracles Elapsed Time: 4.62
-reflex
-trans
-reflex
-Oracles Elapsed Time: 3.97
+Oracles Eq runtime: 4.91
+Oracles Func runtime: 4.96
 Command exited with non-zero status 14
-Oracles Elapsed Time: 4.04
-sym
-func
-Oracles Elapsed Time: 4.60
-Oracles Elapsed Time: 4.08
-Oracles Elapsed Time: 4.28
+Oracles Trans runtime: 4.98
+Oracles Sym runtime: 5.00
+Oracles Reflex runtime: 5.02
+Oracles Onetoone runtime: 5.03
+Oracles Onto runtime: 5.05
+Tester runtime: 4.68
+Command exited with non-zero status 11
+Oracles Eq runtime: 4.77
+Oracles Func runtime: 4.80
 Command exited with non-zero status 14
-Oracles Elapsed Time: 4.33
-trans
-sym
-sym
-func
-Oracles Elapsed Time: 3.90
-Oracles Elapsed Time: 3.83
+Oracles Trans runtime: 4.82
+Oracles Sym runtime: 4.84
+Oracles Reflex runtime: 5.12
+Oracles Onetoone runtime: 5.14
+Oracles Onto runtime: 5.16
+Oracles Onto runtime: 37.34
+Tester runtime: 5.28
+Command exited with non-zero status 11
+Oracles Eq runtime: 5.44
+Oracles Func runtime: 5.55
 Command exited with non-zero status 14
-Oracles Elapsed Time: 3.71
-trans
-eq
-Oracles Elapsed Time: 3.83
-func
-trans
-Oracles Elapsed Time: 4.39
-Oracles Elapsed Time: 4.45
-eq
-trans
+Oracles Trans runtime: 5.56
+Oracles Sym runtime: 5.58
+Oracles Reflex runtime: 5.60
+Oracles Onetoone runtime: 5.62
+Tester runtime: 6.01
+Command exited with non-zero status 11
+Oracles Eq runtime: 6.50
+Oracles Func runtime: 6.62
 Command exited with non-zero status 14
-Oracles Elapsed Time: 3.51
-func
+Oracles Trans runtime: 6.64
+Oracles Sym runtime: 6.65
+Oracles Reflex runtime: 6.67
+Oracles Onetoone runtime: 6.69
+Oracles Onto runtime: 30.22
+Tester runtime: 7.69
 Command exited with non-zero status 11
-Oracles Elapsed Time: 4.08
-Oracles Elapsed Time: 3.70
+Oracles Eq runtime: 7.73
+Oracles Func runtime: 7.74
 Command exited with non-zero status 14
-Oracles Elapsed Time: 3.66
-eq
-func
+Oracles Trans runtime: 7.77
+Oracles Sym runtime: 8.16
+Oracles Reflex runtime: 8.18
+Oracles Onetoone runtime: 8.20
+Oracles Onto runtime: 8.22
+Tester runtime: 7.73
 Command exited with non-zero status 11
-Oracles Elapsed Time: 3.62
+Oracles Eq runtime: 7.74
+Oracles Func runtime: 7.77
 Command exited with non-zero status 14
-Oracles Elapsed Time: 3.83
-func
-Oracles Elapsed Time: 3.45
-eq
-Oracles Elapsed Time: 3.26
+Oracles Trans runtime: 7.79
+Oracles Sym runtime: 7.81
+Oracles Reflex runtime: 7.85
+Oracles Onetoone runtime: 7.87
+Oracles Onto runtime: 31.64
+Oracles Onto runtime: 29.62
+Tester runtime: 9.91
 Command exited with non-zero status 11
-Oracles Elapsed Time: 3.42
-eq
-Oracles Elapsed Time: 3.32
-eq
-Command exited with non-zero status 11
-Oracles Elapsed Time: 3.18
-Command exited with non-zero status 11
-Oracles Elapsed Time: 3.06
-Command exited with non-zero status 11
-Oracles Elapsed Time: 2.99
+Oracles Eq runtime: 9.94
+Oracles Func runtime: 9.96
+Command exited with non-zero status 14
+Oracles Trans runtime: 9.99
+Oracles Sym runtime: 10.01
+Oracles Reflex runtime: 10.03
+Oracles Onetoone runtime: 10.07

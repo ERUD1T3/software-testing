@@ -3,15 +3,9 @@
 
 start_time=`date +%s` #used to get the script runtime
 
-> runtimes.txt #empties the output file so that only new input is written to it
+# clears runtime files
+> runtimes.txt 
 
-# USAGE="Usage: $0 nums..."
-# if [ "$#" == "0" ]; then
-#     echo "$USAGE" please enter Username as argument
-#     exit 1
-# fi
-
-# USER=$1
 USER=jmoukpe2016                    #tracks username   
 TESTSITE=$USER@code01.fit.edu       #full server site domain 
 TESTPATH=kgallagher/sampleprogs/    #path to sample programs
@@ -19,6 +13,8 @@ TARGETPATH=kgallagher/oracles/      # path to oracles
 
 GENERATORS=$(ssh $TESTSITE ls $TESTPATH)
 # TARGETS=$(ssh $TESTSITE ls $TARGETPATH)
+
+# target oracles to test against
 TARGETS=(
     onto
     onetoone
@@ -29,25 +25,40 @@ TARGETS=(
     eq
 )
 
+# display testsite
 echo Server: $TESTSITE
 
+# run test args for progs
 for j in {0..5000..500} 
     do
+
+    # looping through all the sample progs
     for i in $GENERATORS 
         do
         echo ''
 	    echo Runs: $TESTPATH$i $j
-        # ssh $TESTSITE $TESTPATH$i $j | tee >(/usr/bin/time -o runtimes.txt -a -f 'Target: Elapsed time: %e' ssh $TESTSITE $TARGETPATH$i) >(/usr/bin/time -o runtimes.txt -a -f 'Local: Elapsed time: %e' python3 tester.py) >/dev/null
-        ssh $TESTSITE $TESTPATH$i $j | tee >(
-            for ((II=0; II < ${#TARGETS[@]}; ++II))
-                do
-                echo ${TARGETS[II]} &>> runtimes.txt
-                /usr/bin/time -o runtimes.txt -a -f 'Oracles Elapsed Time: %e' ssh $TESTSITE $TARGETPATH${TARGETS[II]}
-                # sleep .5
-            done
-            ) >(/usr/bin/time -o runtimes.txt -a -f 'Tester Elapsed Time: %e' python3 tester.py) >/dev/null
+
+        # run sample progs then pipe their output to oracles, then to tester.py program
+            ssh $TESTSITE $TESTPATH$i $j | tee >(
+                /usr/bin/time -o runtimes.txt -a -f 'Oracles Onto runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[0]}
+            ) >(
+                /usr/bin/time -o runtimes.txt -a -f 'Oracles Onetoone runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[1]}
+            ) >(
+                /usr/bin/time -o runtimes.txt -a -f 'Oracles Reflex runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[2]}
+            ) >(
+                /usr/bin/time -o runtimes.txt -a -f 'Oracles Sym runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[3]}
+            ) >(
+                /usr/bin/time -o runtimes.txt -a -f 'Oracles Trans runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[4]}
+            ) >(
+                /usr/bin/time -o runtimes.txt -a -f 'Oracles Func runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[5]}
+            ) >(
+                /usr/bin/time -o runtimes.txt -a -f 'Oracles Eq runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[6]}
+            ) >(
+                /usr/bin/time -o runtimes.txt -a -f 'Tester runtime: %e' python3 tester.py
+            ) >/dev/null
         sleep .5
     done
 done
 
+# total runtime of test
 echo Total Test Runtime: $(expr `date +%s` - $start_time) s
