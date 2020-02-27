@@ -1,98 +1,46 @@
-Tester runtime: 11.12
-Command exited with non-zero status 11
-Oracles Eq runtime: 11.17
-Oracles Func runtime: 11.26
-Command exited with non-zero status 14
-Oracles Trans runtime: 11.30
-Oracles Sym runtime: 11.33
-Oracles Reflex runtime: 11.36
-Oracles Onetoone runtime: 11.39
-Tester runtime: 9.14
-Command exited with non-zero status 11
-Oracles Eq runtime: 9.34
-Oracles Func runtime: 9.37
-Command exited with non-zero status 14
-Oracles Trans runtime: 9.39
-Oracles Sym runtime: 9.40
-Oracles Reflex runtime: 9.42
-Oracles Onetoone runtime: 9.43
-Oracles Onto runtime: 9.46
-Tester runtime: 4.61
-Command exited with non-zero status 11
-Oracles Eq runtime: 4.63
-Oracles Func runtime: 4.67
-Command exited with non-zero status 14
-Oracles Trans runtime: 4.69
-Oracles Sym runtime: 4.73
-Oracles Reflex runtime: 4.76
-Oracles Onetoone runtime: 4.78
-Tester runtime: 4.90
-Command exited with non-zero status 11
-Oracles Eq runtime: 4.91
-Oracles Func runtime: 4.96
-Command exited with non-zero status 14
-Oracles Trans runtime: 4.98
+Tester runtime: 5.07
+Oracles Eq runtime: 5.28
+Oracles Func runtime: 5.30
+Oracles Trans runtime: 5.33
+Oracles Sym runtime: 5.35
+Oracles Reflex runtime: 5.37
+Oracles Onetoone runtime: 5.38
+Tester runtime: 5.13
+Oracles Eq runtime: 5.14
+Oracles Func runtime: 5.16
+Oracles Trans runtime: 5.19
+Oracles Sym runtime: 5.23
+Oracles Reflex runtime: 5.27
+Oracles Onetoone runtime: 5.35
+Oracles Onto runtime: 5.43
+Tester runtime: 5.05
+Oracles Eq runtime: 5.07
+Oracles Func runtime: 5.11
+Oracles Trans runtime: 5.14
+Oracles Sym runtime: 5.16
+Oracles Reflex runtime: 5.18
+Oracles Onetoone runtime: 5.20
+Tester runtime: 5.09
+Oracles Eq runtime: 5.11
+Oracles Func runtime: 5.16
+Oracles Trans runtime: 5.17
+Oracles Sym runtime: 5.19
+Oracles Reflex runtime: 5.21
+Oracles Onetoone runtime: 5.22
+Oracles Onto runtime: 5.25
+Tester runtime: 4.83
+Oracles Eq runtime: 4.85
+Oracles Func runtime: 4.89
+Oracles Trans runtime: 4.91
 Oracles Sym runtime: 5.00
 Oracles Reflex runtime: 5.02
-Oracles Onetoone runtime: 5.03
-Oracles Onto runtime: 5.05
-Tester runtime: 4.68
-Command exited with non-zero status 11
-Oracles Eq runtime: 4.77
-Oracles Func runtime: 4.80
-Command exited with non-zero status 14
-Oracles Trans runtime: 4.82
-Oracles Sym runtime: 4.84
-Oracles Reflex runtime: 5.12
-Oracles Onetoone runtime: 5.14
-Oracles Onto runtime: 5.16
-Oracles Onto runtime: 37.34
-Tester runtime: 5.28
-Command exited with non-zero status 11
-Oracles Eq runtime: 5.44
-Oracles Func runtime: 5.55
-Command exited with non-zero status 14
-Oracles Trans runtime: 5.56
-Oracles Sym runtime: 5.58
-Oracles Reflex runtime: 5.60
-Oracles Onetoone runtime: 5.62
-Tester runtime: 6.01
-Command exited with non-zero status 11
-Oracles Eq runtime: 6.50
-Oracles Func runtime: 6.62
-Command exited with non-zero status 14
-Oracles Trans runtime: 6.64
-Oracles Sym runtime: 6.65
-Oracles Reflex runtime: 6.67
-Oracles Onetoone runtime: 6.69
-Oracles Onto runtime: 30.22
-Tester runtime: 7.69
-Command exited with non-zero status 11
-Oracles Eq runtime: 7.73
-Oracles Func runtime: 7.74
-Command exited with non-zero status 14
-Oracles Trans runtime: 7.77
-Oracles Sym runtime: 8.16
-Oracles Reflex runtime: 8.18
-Oracles Onetoone runtime: 8.20
-Oracles Onto runtime: 8.22
-Tester runtime: 7.73
-Command exited with non-zero status 11
-Oracles Eq runtime: 7.74
-Oracles Func runtime: 7.77
-Command exited with non-zero status 14
-Oracles Trans runtime: 7.79
-Oracles Sym runtime: 7.81
-Oracles Reflex runtime: 7.85
-Oracles Onetoone runtime: 7.87
-Oracles Onto runtime: 31.64
-Oracles Onto runtime: 29.62
-Tester runtime: 9.91
-Command exited with non-zero status 11
-Oracles Eq runtime: 9.94
-Oracles Func runtime: 9.96
-Command exited with non-zero status 14
-Oracles Trans runtime: 9.99
-Oracles Sym runtime: 10.01
-Oracles Reflex runtime: 10.03
-Oracles Onetoone runtime: 10.07
+Oracles Onetoone runtime: 5.04
+Oracles Onto runtime: 5.10
+Oracles Onto runtime: 30.33
+Tester runtime: 5.20
+Oracles Eq runtime: 5.22
+Oracles Func runtime: 5.34
+Oracles Trans runtime: 5.36
+Oracles Sym runtime: 5.38
+Oracles Reflex runtime: 5.40
+Oracles Onetoone runtime: 5.42
