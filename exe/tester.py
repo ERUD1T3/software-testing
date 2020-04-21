@@ -226,10 +226,10 @@ def main(no_std_in=False):
         print('Is not reflexive')
 
     if prog_test.isSymmetric():
-        print('Symmetric ')
+        print('Is symmetric ')
         eq_checks += 1  # eq_checks = 2
     else:
-        print('Not symmetric')
+        print('Is not symmetric')
 
     if prog_test.isTransitive():
         eq_checks += 1  # eq_checks = 3
