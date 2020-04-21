@@ -201,29 +201,29 @@ def main(no_std_in=False):
     # print(f'data received:\n{prog_test}')  #prints the data stored for test
 
     # print('Running tests...\n')
-    print('\n---Start of Test Program---')
+    # print('\n---Start of Test Program---')
 
     eq_checks = 0  # tracks equivalence checks (3 needed for equivalence)
     is_onto = False  # tracks if onto
     is_one2one = False  # tracks if one to one
 
     if prog_test.isOnto():
-        print('Onto')
+        print('\nIs onto\n', end='')
         is_onto = True
     else:
-        print('Not onto')
+        print('\nIs not onto\n', end='')
 
     if prog_test.isOne2one():
-        print('One to one ')
+        print('Is one to one ')
         is_one2one = True
     else:
-        print('Not one to one')
+        print('Is not one to one')
 
     if prog_test.isReflexive():
-        print('Reflexive ')
+        print('Is reflexive ')
         eq_checks += 1  # eq_checks = 1
     else:
-        print('Not reflexive')
+        print('Is not reflexive')
 
     if prog_test.isSymmetric():
         print('Symmetric ')
@@ -233,27 +233,27 @@ def main(no_std_in=False):
 
     if prog_test.isTransitive():
         eq_checks += 1  # eq_checks = 3
-        print('Transitive ')
+        print('Is transitive ')
     else:
-        print('Not transitive')
+        print('Is not transitive')
 
     if prog_test.isFunction():
-        print('Function')
-        print('Onto function ' if is_onto else 'Not onto function')
-        print('One to one function ' if is_one2one else 'Not one to one function')
+        print('Is function')
+        # print('Is onto function ' if is_onto else 'Is not onto function')
+        # print('One to one function ' if is_one2one else 'Not one to one function')
     else:
-        print('Not function')
+        print('Is not function')
 
     if eq_checks == 3:
-        print('Equivalence relation')
+        print('Is equivalence relation')
         # print('Partitions:')
         prog_test.printEqv()
 
     else:
-        print('Not equivalence relation')
+        print('Is not equivalence relation')
 
     # print('\nTest complete!')
-    print('---End of Test---')
+    # print('---End of Test---')
 
 
 if __name__ == "__main__":

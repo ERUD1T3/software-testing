@@ -40,21 +40,21 @@ for j in {0..5000..500}
 
         # run sample progs then pipe their output to oracles, then to tester.py program
             ssh $TESTSITE $TESTPATH$i $j | tee >(
-                /usr/bin/time --quiet -o runtimes.txt -a -f 'Oracles Onto runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[0]}
+                /usr/bin/time -v -o runtimes.txt -a -f 'Oracles Onto runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[0]}
             ) >(
-                /usr/bin/time --quiet -o runtimes.txt -a -f 'Oracles Onetoone runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[1]}
+                /usr/bin/time -v -o runtimes.txt -a -f 'Oracles Onetoone runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[1]}
             ) >(
-                /usr/bin/time --quiet -o runtimes.txt -a -f 'Oracles Reflex runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[2]}
+                /usr/bin/time -v -o runtimes.txt -a -f 'Oracles Reflex runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[2]}
             ) >(
-                /usr/bin/time --quiet -o runtimes.txt -a -f 'Oracles Sym runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[3]}
+                /usr/bin/time -v -o runtimes.txt -a -f 'Oracles Sym runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[3]}
             ) >(
-                /usr/bin/time --quiet -o runtimes.txt -a -f 'Oracles Trans runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[4]}
+                /usr/bin/time -v -o runtimes.txt -a -f 'Oracles Trans runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[4]}
             ) >(
-                /usr/bin/time --quiet -o runtimes.txt -a -f 'Oracles Func runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[5]}
+                /usr/bin/time -v -o runtimes.txt -a -f 'Oracles Func runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[5]}
             ) >(
-                /usr/bin/time --quiet -o runtimes.txt -a -f 'Oracles Eq runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[6]}
+                /usr/bin/time -v -o runtimes.txt -a -f 'Oracles Eq runtime: %e' ssh $TESTSITE $TARGETPATH${TARGETS[6]}
             ) >(
-                /usr/bin/time --quiet -o runtimes.txt -a -f 'Tester runtime: %e' python3 tester.py
+                /usr/bin/time -v -o runtimes.txt -a -f 'Tester runtime: %e' python3 tester.py
             ) >/dev/null
         sleep .5
     done

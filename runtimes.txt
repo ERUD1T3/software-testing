@@ -1,44 +1,24 @@
-Command exited with non-zero status 2
-Local: Elapsed time: 0.02
-Command exited with non-zero status 11
-Target: Elapsed time: 2.66
-Command exited with non-zero status 2
-Local: Elapsed time: 0.02
-Command exited with non-zero status 13
-Target: Elapsed time: 2.86
-Command exited with non-zero status 2
-Local: Elapsed time: 0.04
-Command exited with non-zero status 13
-Target: Elapsed time: 2.71
-Command exited with non-zero status 2
-Local: Elapsed time: 0.02
-Command exited with non-zero status 14
-Target: Elapsed time: 2.63
-Command exited with non-zero status 2
-Local: Elapsed time: 0.02
-Command exited with non-zero status 14
-Target: Elapsed time: 2.84
-Command exited with non-zero status 2
-Local: Elapsed time: 0.02
-Command exited with non-zero status 14
-Target: Elapsed time: 2.85
-Command exited with non-zero status 2
-Local: Elapsed time: 0.03
-Command exited with non-zero status 14
-Target: Elapsed time: 2.99
-Command exited with non-zero status 2
-Local: Elapsed time: 0.03
-Command exited with non-zero status 14
-Target: Elapsed time: 2.81
-Command exited with non-zero status 2
-Local: Elapsed time: 0.02
-Command exited with non-zero status 14
-Target: Elapsed time: 2.59
-Command exited with non-zero status 2
-Local: Elapsed time: 0.02
-Command exited with non-zero status 14
-Target: Elapsed time: 2.90
-Command exited with non-zero status 2
-Local: Elapsed time: 0.04
-Command terminated by signal 2
-Target: Elapsed time: 74.35
+Tester runtime: 0.03
+Oracles Func runtime: 3.96
+Oracles Eq runtime: 3.96
+Oracles Onetoone runtime: 3.97
+Oracles Sym runtime: 3.97
+Oracles Trans runtime: 3.97
+Oracles Reflex runtime: 3.97
+Oracles Onto runtime: 3.97
+Tester runtime: 0.02
+Oracles Func runtime: 1.79
+Oracles Trans runtime: 1.79
+Oracles Onetoone runtime: 1.80
+Oracles Eq runtime: 1.79
+Oracles Sym runtime: 1.79
+Oracles Reflex runtime: 1.80
+Oracles Onto runtime: 1.80
+Tester runtime: 0.02
+Oracles Trans runtime: 1.76
+Oracles Onetoone runtime: 1.76
+Oracles Reflex runtime: 1.76
+Oracles Func runtime: 1.76
+Oracles Sym runtime: 1.76
+Oracles Eq runtime: 1.76
+Oracles Onto runtime: 1.76
