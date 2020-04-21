@@ -6,7 +6,7 @@ import csv
 
 
 def compare(a, b):
-    if (cmp(a, b) == 0):
+    if (a == b):
         return 1
     else:
         return 0
