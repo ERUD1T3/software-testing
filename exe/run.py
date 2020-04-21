@@ -4,15 +4,15 @@ import time
 import csv
 import psutil
 
-def compare(var1, var2):
-    if (cmp(var1, var2) == 0):
+def compare(a, b):
+    if (cmp(a, b) == 0):
         return 1
     else:
         return 0
 
 def main():
 
-    fields = ['Test Number', 'Generator', 'Value (U)', 'Oracles Runtime(s)', 'My Runtime(s)', 'Test Accuracy', 'Oracles Memory', 'My Memory']
+    fields = ['Test Number', 'Generator', 'Value (U)', 'Oracles vs Mariam', 'Oracles vs Josias', 'Oracles Runtime(s)', 'Mariam Runtime(s)', 'Josias Runtime(s)', 'Oracles Memory', 'Mariam Memory', 'Josias Memory']
     filename = "collectedData.csv"
 
     startPath = '/udrive/faculty/kgallagher/public_html/'
@@ -54,7 +54,18 @@ def main():
                 mem_end2 = psutil.virtual_memory().used
 		        myMemory = (mem_end2) / 1024
 
-                row = [count, word, param, oraclesRuntime, myRuntime, compare(var1, var2), oraclesMemory, myMemory]
+                third_timer = time.time()
+                cmd3 = startPath + sampleProgSite + word + ' ' + str(param)
+                cmd3 += ' | ' + ' ' + 'python tester.py' + ' ' + word
+                var3 = os.popen(cmd3).read()
+                thirdRuntime = time.time() - third_timer
+
+                mem_end3 = psutil.virtual_memory().used
+                thirdMemory = (mem_end3) / 1024
+
+
+
+                row = [count, word, param, compare(var1, var2), compare(var1, var3), oraclesRuntime, myRuntime, thirdRuntime, oraclesMemory, myMemory, thirdMemory]
                 csvwriter.writerow(row)
 
 	print("Done, data available at collectedData.csv")
