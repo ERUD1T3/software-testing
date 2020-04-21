@@ -3,6 +3,7 @@ from random import randint
 import time
 import csv
 # import psutil
+import resource
 
 
 def compare(a, b):
@@ -38,6 +39,8 @@ def main():
                 first_timer = time.time()
                 cmd1 = startPath + sampleProgSite + word + ' ' + str(param)
                 cmd1 += ' | ' + startPath + oraclesSite + word
+
+                
                 var1 = os.popen(cmd1).read()
 
                 oraclesRuntime = time.time() - first_timer
