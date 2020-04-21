@@ -249,7 +249,7 @@ def main(prog_to_test='all', no_std_in=False):
         else:
             print('Is not function')
 
-````if(prog_to_test == 'eq' or prog_to_test == 'all'):
+    if(prog_to_test == 'eq' or prog_to_test == 'all'):
         if eq_checks == 3:
             print('Is equivalence relation')
             # print('Partitions:')
