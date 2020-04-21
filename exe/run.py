@@ -16,7 +16,7 @@ def compare(a, b):
 def main():
 
     fields = ['Test Number', 'Generator', 'Value (U)', 'Oracles vs Mariam', 'Oracles vs Josias', 'Oracles Runtime(s)',
-                                                  'Mariam Runtime(s)', 'Josias Runtime(s)']
+                                                  'Mariam Runtime(s)', 'Josias Runtime(s)', 'Oracles Memory', 'Mariam', 'Josias']
     filename = "collectedData.csv"
 
     startPath = '/udrive/faculty/kgallagher/public_html/'
@@ -46,8 +46,8 @@ def main():
                 oraclesRuntime = time.time() - first_timer
 
                 # mem_end1 = psutil.virtual_memory().used
-
-                # oraclesMemory = (mem_end1) / 1024
+                mem_end1 = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+                oraclesMemory = (mem_end1) / 1024
 
                 second_timer = time.time()
                 cmd2 = startPath + sampleProgSite + word + ' ' + str(param)
@@ -57,7 +57,8 @@ def main():
                 myRuntime = time.time() - second_timer
 
                 # mem_end2 = psutil.virtual_memory().used
-                # myMemory = (mem_end2) / 1024
+                mem_end2 = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+                myMemory = (mem_end2) / 1024
 
                 third_timer = time.time()
                 cmd3 = startPath + sampleProgSite + word + ' ' + str(param)
@@ -66,11 +67,12 @@ def main():
                 thirdRuntime = time.time() - third_timer
 
                 # mem_end3 = psutil.virtual_memory().used
-                # thirdMemory = (mem_end3) / 1024
+                mem_end3 = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+                thirdMemory = (mem_end3) / 1024
 
 
 
-                row = [count, word, param, compare(var1, var2), compare(var1, var3), oraclesRuntime, myRuntime, thirdRuntime]
+                row = [count, word, param, compare(var1, var2), compare(var1, var3), oraclesRuntime, myRuntime, thirdRuntime, oraclesMemory, myMemory, thirdMemory]
                 csvwriter.writerow(row)
 
     print("Done, data available at collectedData.csv")
