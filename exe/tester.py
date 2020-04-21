@@ -215,48 +215,48 @@ def main(prog_to_test='all', no_std_in=False):
 
     if(prog_to_test == 'onetoone' or prog_to_test == 'all'):
         if prog_test.isOne2one():
-            print('Is one to one ')
+            print('\nIs one to one\n', end='')
             is_one2one = True
         else:
-            print('Is not one to one')
+            print('\nIs not one to one\n', end='')
 
     if(prog_to_test == 'reflex' or prog_to_test == 'all'):
         if prog_test.isReflexive():
-            print('Is reflexive ')
+            print('\nIs reflexive\n', end='')
             eq_checks += 1  # eq_checks = 1
         else:
-            print('Is not reflexive')
+            print('\nIs not reflexive\n', end='')
 
     if(prog_to_test == 'sym' or prog_to_test == 'all'):
         if prog_test.isSymmetric():
-            print('Is symmetric ')
+            print('\nIs symmetric\n', end='')
             eq_checks += 1  # eq_checks = 2
         else:
-            print('Is not symmetric')
+            print('\nIs not symmetric\n', end='')
 
     if(prog_to_test == 'trans' or prog_to_test == 'all'):
         if prog_test.isTransitive():
             eq_checks += 1  # eq_checks = 3
-            print('Is transitive ')
+            print('\nIs transitive\n', end='')
         else:
-            print('Is not transitive')
+            print('\nIs not transitive\n', end='')
 
     if(prog_to_test == 'func' or prog_to_test == 'all'):
         if prog_test.isFunction():
-            print('Is function')
+            print('\nIs function\n', end='')
             # print('Is onto function ' if is_onto else 'Is not onto function')
             # print('One to one function ' if is_one2one else 'Not one to one function')
         else:
-            print('Is not function')
+            print('\nIs not function\n', end='')
 
     if(prog_to_test == 'eq' or prog_to_test == 'all'):
         if eq_checks == 3:
-            print('Is equivalence relation')
+            print('\nIs equivalence relation\n', end='')
             # print('Partitions:')
             prog_test.printEqv()
 
         else:
-            print('Is not equivalence relation')
+            print('\nIs not equivalence relation\n', end='')
 
     # print('\nTest complete!')
     # print('---End of Test---')
