@@ -2,7 +2,7 @@ import os
 from random import randint
 import time
 import csv
-import psutil
+# import psutil
 
 
 def compare(a, b):
@@ -15,7 +15,7 @@ def compare(a, b):
 def main():
 
     fields = ['Test Number', 'Generator', 'Value (U)', 'Oracles vs Mariam', 'Oracles vs Josias', 'Oracles Runtime(s)',
-                                                  'Mariam Runtime(s)', 'Josias Runtime(s)', 'Oracles Memory', 'Mariam Memory', 'Josias Memory']
+                                                  'Mariam Runtime(s)', 'Josias Runtime(s)']
     filename = "collectedData.csv"
 
     startPath = '/udrive/faculty/kgallagher/public_html/'
@@ -42,9 +42,9 @@ def main():
 
                 oraclesRuntime = time.time() - first_timer
 
-                mem_end1 = psutil.virtual_memory().used
+                # mem_end1 = psutil.virtual_memory().used
 
-                oraclesMemory = (mem_end1) / 1024
+                # oraclesMemory = (mem_end1) / 1024
 
                 second_timer = time.time()
                 cmd2 = startPath + sampleProgSite + word + ' ' + str(param)
@@ -53,8 +53,8 @@ def main():
 
                 myRuntime = time.time() - second_timer
 
-                mem_end2 = psutil.virtual_memory().used
-                myMemory = (mem_end2) / 1024
+                # mem_end2 = psutil.virtual_memory().used
+                # myMemory = (mem_end2) / 1024
 
                 third_timer = time.time()
                 cmd3 = startPath + sampleProgSite + word + ' ' + str(param)
@@ -62,12 +62,12 @@ def main():
                 var3 = os.popen(cmd3).read()
                 thirdRuntime = time.time() - third_timer
 
-                mem_end3 = psutil.virtual_memory().used
-                thirdMemory = (mem_end3) / 1024
+                # mem_end3 = psutil.virtual_memory().used
+                # thirdMemory = (mem_end3) / 1024
 
 
 
-                row = [count, word, param, compare(var1, var2), compare(var1, var3), oraclesRuntime, myRuntime, thirdRuntime, oraclesMemory, myMemory, thirdMemory]
+                row = [count, word, param, compare(var1, var2), compare(var1, var3), oraclesRuntime, myRuntime, thirdRuntime]
                 csvwriter.writerow(row)
 
     print("Done, data available at collectedData.csv")
