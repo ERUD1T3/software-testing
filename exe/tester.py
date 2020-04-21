@@ -9,8 +9,7 @@
 '''
 
 from bisect import insort
-import sys
-
+import sys 
 
 class Test:
     '''Test class for prog unit testing'''
@@ -192,7 +191,7 @@ class Test:
         print(f'\n {counter} classes')
 
 
-def main(no_std_in=False):
+def main(prog_to_test='all', no_std_in=False):
 
     # receive input from pipeing stdin
     # constructor load data into prog_test test object
@@ -207,50 +206,57 @@ def main(no_std_in=False):
     is_onto = False  # tracks if onto
     is_one2one = False  # tracks if one to one
 
-    if prog_test.isOnto():
-        print('\nIs onto\n', end='')
-        is_onto = True
-    else:
-        print('\nIs not onto\n', end='')
+    if(prog_to_test == 'onto' or prog_to_test == 'all'):
+        if prog_test.isOnto():
+            print('\nIs onto\n', end='')
+            is_onto = True
+        else:
+            print('\nIs not onto\n', end='')
 
-    if prog_test.isOne2one():
-        print('Is one to one ')
-        is_one2one = True
-    else:
-        print('Is not one to one')
+    if(prog_to_test == 'onetoone' or prog_to_test == 'all'):
+        if prog_test.isOne2one():
+            print('Is one to one ')
+            is_one2one = True
+        else:
+            print('Is not one to one')
 
-    if prog_test.isReflexive():
-        print('Is reflexive ')
-        eq_checks += 1  # eq_checks = 1
-    else:
-        print('Is not reflexive')
+    if(prog_to_test == 'reflex' or prog_to_test == 'all'):
+        if prog_test.isReflexive():
+            print('Is reflexive ')
+            eq_checks += 1  # eq_checks = 1
+        else:
+            print('Is not reflexive')
 
-    if prog_test.isSymmetric():
-        print('Is symmetric ')
-        eq_checks += 1  # eq_checks = 2
-    else:
-        print('Is not symmetric')
+    if(prog_to_test == 'sym' or prog_to_test == 'all'):
+        if prog_test.isSymmetric():
+            print('Is symmetric ')
+            eq_checks += 1  # eq_checks = 2
+        else:
+            print('Is not symmetric')
 
-    if prog_test.isTransitive():
-        eq_checks += 1  # eq_checks = 3
-        print('Is transitive ')
-    else:
-        print('Is not transitive')
+    if(prog_to_test == 'trans' or prog_to_test == 'all'):
+        if prog_test.isTransitive():
+            eq_checks += 1  # eq_checks = 3
+            print('Is transitive ')
+        else:
+            print('Is not transitive')
 
-    if prog_test.isFunction():
-        print('Is function')
-        # print('Is onto function ' if is_onto else 'Is not onto function')
-        # print('One to one function ' if is_one2one else 'Not one to one function')
-    else:
-        print('Is not function')
+    if(prog_to_test == 'func' or prog_to_test == 'all'):
+        if prog_test.isFunction():
+            print('Is function')
+            # print('Is onto function ' if is_onto else 'Is not onto function')
+            # print('One to one function ' if is_one2one else 'Not one to one function')
+        else:
+            print('Is not function')
 
-    if eq_checks == 3:
-        print('Is equivalence relation')
-        # print('Partitions:')
-        prog_test.printEqv()
+````if(prog_to_test == 'eq' or prog_to_test == 'all'):
+        if eq_checks == 3:
+            print('Is equivalence relation')
+            # print('Partitions:')
+            prog_test.printEqv()
 
-    else:
-        print('Is not equivalence relation')
+        else:
+            print('Is not equivalence relation')
 
     # print('\nTest complete!')
     # print('---End of Test---')
@@ -260,10 +266,11 @@ if __name__ == "__main__":
 
     try:
         # run the main function
-        main()
+        test_to_run = sys.argv[1]
+        main(prog_to_test=test_to_run)
 
     except ValueError as v:
-        main(True)
+        main(no_std_in=True)
 
     except Exception as e:
         print(f'\n--{e}: Error in receiving stdin input--\n')
