@@ -58,7 +58,7 @@ def main():
 
                 third_timer = time.time()
                 cmd3 = startPath + sampleProgSite + word + ' ' + str(param)
-                cmd3 += ' | ' + ' ' + 'python tester.py' + ' ' + word
+                cmd3 += ' | ' + ' ' + 'python3 tester.py' + ' ' + word
                 var3 = os.popen(cmd3).read()
                 thirdRuntime = time.time() - third_timer
 
