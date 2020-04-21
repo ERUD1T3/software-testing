@@ -30,7 +30,7 @@ def main():
         count = 0
         while count < 100:
             for word in Generators:
-		        count = count + 1
+		        count += 1
                 param = randint(1, 200)
 
                 first_timer = time.time()
