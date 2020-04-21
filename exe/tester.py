@@ -45,15 +45,15 @@ class Test:
             insort(self.domain_set[i], o)
             insort(self.range_set[o], i)
 
-    def __repr__(self):
-        '''display the test data structures'''
-        print(f'\tDomain \t\tRange')
-        # for dom, ran in zip(self.domain_set, self.range_set):
-        #     print(f'{dom}{ran}')
-        for i in range(1, self.size + 1):
-            print(
-                f'{i}: \t{self.domain_set[i]} | \t{self.range_set[i]}')
-        return str(self.size)
+    # def __repr__(self):
+    #     '''display the test data structures'''
+    #     print(f'\tDomain \t\tRange')
+    #     # for dom, ran in zip(self.domain_set, self.range_set):
+    #     #     print(f'{dom}{ran}')
+    #     for i in range(1, self.size + 1):
+    #         print(
+    #             f'{i}: \t{self.domain_set[i]} | \t{self.range_set[i]}')
+    #     return str(self.size)
 
     def isOnto(self):
         '''return true if the prog is onto, false otherwise'''
@@ -155,40 +155,40 @@ class Test:
 
         return True
 
-    def printEqv(self):
-        '''Prints equivalence classes partitions'''
-        # keep track of the already printed classes
-        printed = {idx: False for idx in range(1, self.size + 1)}
-        # tracks the number of printed partitions (no more than 10 )
-        counter = 0
-        # tracks if a list of number is a partition that hasn't yet been printed
-        was_partition = False
-        to_print = False  # tracks if remaining partitions should be printed
+    # def printEqv(self):
+    #     '''Prints equivalence classes partitions'''
+    #     # keep track of the already printed classes
+    #     printed = {idx: False for idx in range(1, self.size + 1)}
+    #     # tracks the number of printed partitions (no more than 10 )
+    #     counter = 0
+    #     # tracks if a list of number is a partition that hasn't yet been printed
+    #     was_partition = False
+    #     to_print = False  # tracks if remaining partitions should be printed
 
-        for idx in range(1, self.size + 1):
-            for idy in self.domain_set[idx]:
-                if not printed[idy]:
-                    printed[idy] = True
-                    was_partition = True
-                    if to_print:
-                        print(idy, end=' ')
+    #     for idx in range(1, self.size + 1):
+    #         for idy in self.domain_set[idx]:
+    #             if not printed[idy]:
+    #                 printed[idy] = True
+    #                 was_partition = True
+    #                 if to_print:
+    #                     print(idy, end=' ')
 
-            if was_partition:
-                if to_print:
-                    print()  # adds new line after a single partition is printed
-                counter += 1
-                was_partition = False
+    #         if was_partition:
+    #             if to_print:
+    #                 print()  # adds new line after a single partition is printed
+    #             counter += 1
+    #             was_partition = False
 
-            if counter > 10:
-                # shouldn't print partitions anymore
-                to_print = False
+    #         if counter > 10:
+    #             # shouldn't print partitions anymore
+    #             to_print = False
 
-        if not to_print:
-            # print('...')
-            pass
+    #     if not to_print:
+    #         # print('...')
+    #         pass
 
-            # prints the total number of partitions
-        print(f'\n {counter} classes')
+    #         # prints the total number of partitions
+    #     print(f'\n {counter} classes')
 
 
 def main(prog_to_test='all', no_std_in=False):
@@ -249,14 +249,14 @@ def main(prog_to_test='all', no_std_in=False):
         else:
             print('\nIs not function\n', end='')
 
-    if(prog_to_test == 'eq' or prog_to_test == 'all'):
-        if eq_checks == 3:
-            print('\nIs equivalence relation\n', end='')
-            # print('Partitions:')
-            prog_test.printEqv()
+    # if(prog_to_test == 'eq' or prog_to_test == 'all'):
+    #     if eq_checks == 3:
+    #         print('\nIs equivalence relation\n', end='')
+    #         # print('Partitions:')
+    #         # prog_test.printEqv()
 
-        else:
-            print('\nIs not equivalence relation\n', end='')
+    #     else:
+    #         print('\nIs not equivalence relation\n', end='')
 
     # print('\nTest complete!')
     # print('---End of Test---')
